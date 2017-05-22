@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.6
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Recommended-musical-scale-using-MIDI", "Recommended-musical-scale-using-MIDI\Recommended-musical-scale-using-MIDI.csproj", "{383A0DA3-4DF3-4220-8A7F-144CAA9DF24E}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MidiChunkData", "MidiChunkData\MidiChunkData.csproj", "{3A57B231-ADB5-4930-9375-A88657E270C7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MidiPlayer", "MidiPlayer\MidiPlayer.csproj", "{969B705B-0F22-4882-9051-0E2CAFD24C14}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "githubtest", "githubtest\githubtest.csproj", "{0DA8316A-E8A2-42CD-B0E1-47961CA5E7AF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{969B705B-0F22-4882-9051-0E2CAFD24C14}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{969B705B-0F22-4882-9051-0E2CAFD24C14}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{969B705B-0F22-4882-9051-0E2CAFD24C14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0DA8316A-E8A2-42CD-B0E1-47961CA5E7AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DA8316A-E8A2-42CD-B0E1-47961CA5E7AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DA8316A-E8A2-42CD-B0E1-47961CA5E7AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DA8316A-E8A2-42CD-B0E1-47961CA5E7AF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
