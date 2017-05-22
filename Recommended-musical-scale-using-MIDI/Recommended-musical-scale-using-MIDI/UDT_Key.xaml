@@ -11,7 +11,8 @@
             <ColumnDefinition/>
             <ColumnDefinition Width="200*"/>
         </Grid.ColumnDefinitions>
-        <TextBox x:Name="TB_NoteList" Grid.Column="1" HorizontalAlignment="Left" Height="46" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="378" Margin="8,54,0,0"/>
+        <TextBox x:Name="TB_NoteList" Grid.Column="1" IsReadOnly="True" HorizontalAlignment="Left" Height="46" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="378" Margin="8,54,0,0"/>
+        <Image x:Name="image" Binding.SourceUpdated="image_SourceUpdated"  Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="29"/>
 
     </Grid>
 </UserControl>

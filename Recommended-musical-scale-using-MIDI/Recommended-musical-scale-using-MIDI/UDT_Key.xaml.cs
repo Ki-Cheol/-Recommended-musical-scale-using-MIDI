@@ -242,7 +242,7 @@ namespace Recommended_musical_scale_using_MIDI
                         {
                             dodown = true; MidiShortMsgPlayer.SendMidiShortMsg(buf1 + buf2 + msgch);
                             TB_NoteList.Text += MusicScale.Do5;
-
+                            
                             scalebase.Add(MusicScale.Do5);
                         }
                     }
@@ -423,5 +423,6 @@ namespace Recommended_musical_scale_using_MIDI
             }
         }
         #endregion
+
     }
 }

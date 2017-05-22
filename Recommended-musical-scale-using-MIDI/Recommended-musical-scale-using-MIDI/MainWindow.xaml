@@ -6,5 +6,10 @@
         xmlns:local="clr-namespace:Recommended_musical_scale_using_MIDI"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
-    <Grid/>
+    <!--포커싱 이동하는방법 -->
+    <Grid FocusManager.FocusedElement="{Binding ElementName=keyname}">
+           
+        <local:UDT_Key HorizontalAlignment="Left" x:Name="keyname" Focusable="True" VerticalAlignment="Top" Margin="0,220,0,0" Width="507"/>
+  
+    </Grid>
 </Window>
