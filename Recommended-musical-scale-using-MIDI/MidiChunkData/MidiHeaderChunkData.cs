@@ -6,7 +6,7 @@ public enum NoteEvent
     NoteOn=0x90
 }
 
-namespace MyMusic
+namespace MidiChunkDataLib
 {
     public class MidiHeaderChunkData
     {

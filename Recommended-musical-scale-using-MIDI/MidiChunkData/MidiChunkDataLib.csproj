@@ -30,6 +30,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -49,9 +50,9 @@
     <Compile Include="ReadMidi.xaml.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MusicalTrack\MusicalTrack.csproj">
+    <ProjectReference Include="..\MusicalTrack\MusicalTrackLib.csproj">
       <Project>{61C59A47-D87D-49CE-A20C-53023D9AC09B}</Project>
-      <Name>MusicalTrack</Name>
+      <Name>MusicalTrackLib</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

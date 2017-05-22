@@ -4,10 +4,9 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MIDICREACT;
 using MusicalTrackLib;
 
-namespace MyMusic
+namespace MidiChunkDataLib
 {
   public class MidiTrackChunkData
     {
