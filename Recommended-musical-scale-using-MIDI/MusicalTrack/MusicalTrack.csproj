@@ -40,8 +40,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Harmony.cs" />
+    <Compile Include="MusicalTrack.cs" />
+    <Compile Include="MusicInfo.cs" />
+    <Compile Include="NomalNote.cs" />
+    <Compile Include="Note.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RestNote.cs" />
+    <Compile Include="UDT.cs" />
     <Compile Include="UserDataTemplate.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

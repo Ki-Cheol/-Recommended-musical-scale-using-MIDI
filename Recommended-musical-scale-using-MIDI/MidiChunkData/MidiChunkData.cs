@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MIDICREACT
+namespace m
 {
     public class MidiChunkData
     {
