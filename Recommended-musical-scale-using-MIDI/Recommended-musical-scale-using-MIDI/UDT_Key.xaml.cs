@@ -46,6 +46,9 @@ namespace Recommended_musical_scale_using_MIDI
            
 
         }
+
+
+
         #region 키보드조작
         private void MainWindow_KeyUp(object sender, KeyEventArgs e)
         {
