@@ -48,6 +48,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ReadMidi.xaml.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MusicalTrack\MusicalTrack.csproj">
+      <Project>{61C59A47-D87D-49CE-A20C-53023D9AC09B}</Project>
+      <Name>MusicalTrack</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
