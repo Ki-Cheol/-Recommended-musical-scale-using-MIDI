@@ -8,5 +8,6 @@ namespace MusicalTrack
 {
     public class Class1
     {
+        int a;
     }
 }
