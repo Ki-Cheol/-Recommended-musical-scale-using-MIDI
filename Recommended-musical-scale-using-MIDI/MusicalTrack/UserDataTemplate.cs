@@ -76,11 +76,18 @@ namespace MusicalTrackLib
 
         public int data;    // (60000000(1분의 마이크로초) / tempo)
 
+        /// <summary>
+        /// 템포가져오기
+        /// </summary>
+        /// <returns></returns>
         public float GetTempoByData()
         {
             return (float)60000000 / (float)data;
         }
-
+        /// <summary>
+        /// 템포변경
+        /// </summary>
+        /// <param name="tempo">변경할 탬포</param>
         public void SetDataByTempo(float tempo)
         {
             this.data = (int)(60000000 / tempo);

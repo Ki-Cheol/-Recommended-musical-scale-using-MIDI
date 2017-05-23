@@ -37,6 +37,7 @@ namespace Recommended_musical_scale_using_MIDI
             {
                 CB_Instrument.Items.Add(name);
             }
+            CB_Instrument.SelectedItem = CB_Instrument.Items[0];
         }
         private void BT_Save_Click(object sender, RoutedEventArgs e)
         {

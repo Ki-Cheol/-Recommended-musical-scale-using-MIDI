@@ -42,6 +42,7 @@ namespace MusicalTrackLib
             int oct = (int)scale/12;
             int note = (int)scale % 12;
             string notestr = string.Empty;
+            //디버깅용
             switch (note)
                         {
                             case 0: notestr = "도"; break;

@@ -94,7 +94,6 @@ namespace MidiChunkDataLib
 
             headerByte[12] = (byte)(timedivision / 256);
             headerByte[13] = (byte)(timedivision % 256);
-
             bw.Write(headerByte);
         }
 

@@ -30,6 +30,10 @@ namespace MidiChunkDataLib
 
         public byte[] seqEvent { get; set; }
 
+        /// <summary>
+        /// 트랙수만큼 메타이벤트 인포 생성
+        /// </summary>
+        /// <param name="trackcount"></param>
         public MidiMetaEventInfo(int trackcount)
         {
             trackNames = new string[trackcount];

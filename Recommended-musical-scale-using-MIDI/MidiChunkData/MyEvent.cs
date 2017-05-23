@@ -42,11 +42,14 @@ namespace MidiChunkDataLib
         public int data2 { get; set; }
         public int term { get; set; }   //Next Same Note's time (다음 같은 채널의 같은 음 사이의 타임 텀)
 
+        /// <summary>
+        /// 지금은 아니나 midiplayer 만들때 사용할 예정  getwunmmMsg
+        /// </summary>
+        /// <returns></returns>
         public int GetWinmmMsg()
         {
             int buf1 = data1 << 8;
             int buf2 = data2 << 16;
-
             return buf1 + buf2 + msg + ch;
         }
     }
