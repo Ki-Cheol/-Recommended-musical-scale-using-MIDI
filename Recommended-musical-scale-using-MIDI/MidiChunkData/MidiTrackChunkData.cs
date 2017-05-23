@@ -1211,6 +1211,7 @@ namespace MidiChunkDataLib
                     byteList.Add((byte)me.msg[1]);
 
                     byteList.Add((byte)me.dataLen);
+                   
 
                     foreach (byte bt in me.data)
                     {
@@ -1238,10 +1239,13 @@ namespace MidiChunkDataLib
                         byteList.Add((byte)me.data1);
                         byteList.Add((byte)me.data2);
                     }
+
                     else if (me.msg == 192 || me.msg == 208)
                     {
+
                         List<byte> deltatimeBytes = GetDeltaTimeFromTime(me.time + beforExcuSysEventtime);
                         beforExcuSysEventtime = 0;
+
 
                         foreach (byte bt in deltatimeBytes)
                         {
@@ -1272,6 +1276,7 @@ namespace MidiChunkDataLib
             byteList.Add((byte)0);
 
             int byteCount = byteList.Count;
+            // 0 0 0 0  256 *256 =65536 65536* 256 =1677216
             byte[] trackLen = new byte[4];
             trackLen[0] = (byte)(byteCount / 16777216);
             trackLen[1] = (byte)((byteCount % 16777216) / 65536);
@@ -1313,6 +1318,7 @@ namespace MidiChunkDataLib
 
             return deltatimeList;
         }
+
         #endregion
 
         #region 청크데이타필요부분
@@ -1725,6 +1731,9 @@ namespace MidiChunkDataLib
     }
 
     #endregion
+        
+
+
 }
 
 
