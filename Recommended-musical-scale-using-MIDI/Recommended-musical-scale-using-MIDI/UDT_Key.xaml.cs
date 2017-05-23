@@ -20,6 +20,7 @@ namespace Recommended_musical_scale_using_MIDI
     /// <summary>
     /// UDT_Key.xaml에 대한 상호 작용 논리
     /// </summary>
+    /// 
     public partial class UDT_Key : UserControl
     {
         bool dodown = false;
@@ -36,17 +37,30 @@ namespace Recommended_musical_scale_using_MIDI
         bool sidown = false;
         bool do6down = false;
         int octavecount = 5;
-        List<MusicScale> scalebase = new List<MusicScale>();
+        public List<MusicScale> ScaleBase
+        {
+            get
+            {
+                return scalebase;
+            }
+        }
+        private List<MusicScale> scalebase = new List<MusicScale>();
         public UDT_Key()
         {
             InitializeComponent();
             KeyDown += MainWindow_KeyDown;
             KeyUp += MainWindow_KeyUp;
             MidiShortMsgPlayer.MidiOpen();
-           
-
         }
-
+        public UDT_Key(List<MusicScale> scalebase)
+        {
+            InitializeComponent();
+            KeyDown += MainWindow_KeyDown;
+            KeyUp += MainWindow_KeyUp;
+            MidiShortMsgPlayer.MidiOpen();
+            this.scalebase = scalebase;
+           
+        }
 
 
         #region 키보드조작

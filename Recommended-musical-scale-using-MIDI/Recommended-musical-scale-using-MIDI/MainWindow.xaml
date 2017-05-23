@@ -9,7 +9,10 @@
     <!--포커싱 이동하는방법 -->
     <Grid FocusManager.FocusedElement="{Binding ElementName=keyname}">
            
-        <local:UDT_Key HorizontalAlignment="Left" x:Name="keyname" Focusable="True" VerticalAlignment="Top" Margin="0,220,0,0" Width="507"/>
-  
+        <local:UDT_Key HorizontalAlignment="Left"  x:Name="keyname" Focusable="True" VerticalAlignment="Top" Margin="0,220,0,0" Width="507"/>
+        <Button x:Name="BT_Save" Content="세이브" HorizontalAlignment="Left" Margin="432,10,0,0" VerticalAlignment="Top" Width="75" Click="BT_Save_Click"/>
+        <ComboBox x:Name="CB_Instrument" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="BT_ChangeInstrument" Content="악기변경" HorizontalAlignment="Left" Margin="153,10,0,0" VerticalAlignment="Top" Width="75" Click="BT_ChangeInstrument_Click"/>
+
     </Grid>
 </Window>

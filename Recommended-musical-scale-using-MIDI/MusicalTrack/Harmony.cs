@@ -8,16 +8,26 @@ namespace MusicalTrackLib
     public class Harmony : Note
     {
         public List<NomalNote> nomalNotes { get; set; }
+        /// <summary>
+        /// harmony노트 노트의 상속
+        /// </summary>
+        /// <param name="NomalNotes">노트의 리스트</param>
         public Harmony(List<NomalNote> NomalNotes)
         {
             this.nomalNotes = NomalNotes;
         }
+        /// <summary>
+        /// 매개변수없는 하모니  자체 NoteList 생성
+        /// </summary>
         public Harmony()
         {
             this.nomalNotes = new List<NomalNote>();
         }
         
-
+        /// <summary>
+        /// 노트의 노말노트 생성 
+        /// </summary>
+        /// <param name="nn"></param>
         public void AddNomalNote(NomalNote nn)
         {
             nomalNotes.Add(nn);

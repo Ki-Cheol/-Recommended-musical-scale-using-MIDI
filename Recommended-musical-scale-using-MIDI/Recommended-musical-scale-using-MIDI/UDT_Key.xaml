@@ -8,11 +8,12 @@
              d:DesignHeight="100" d:DesignWidth="400">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="200*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="339*"/>
+            <ColumnDefinition Width="59*"/>
         </Grid.ColumnDefinitions>
-        <TextBox x:Name="TB_NoteList" Grid.Column="1" IsReadOnly="True" HorizontalAlignment="Left" Height="46" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="378" Margin="8,54,0,0"/>
+        <TextBox x:Name="TB_NoteList" Grid.Column="1" IsReadOnly="True" HorizontalAlignment="Left" Height="90" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="378" Margin="8,10,0,0" Grid.ColumnSpan="2"/>
 
-        
+
     </Grid>
 </UserControl>
