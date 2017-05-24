@@ -1,4 +1,5 @@
 ﻿using Microsoft.Win32;
+using MidiChunkDataLib;
 using MidiPlayLib;
 using MusicalTrackLib;
 using System;
@@ -23,13 +24,24 @@ namespace Recommended_musical_scale_using_MIDI
     /// </summary>
     public partial class MainWindow : Window
     {
-        List<MusicalTrackLib.MusicScale> scalebase;
+        List<Note> scalebase;
         public MainWindow()
         {
             InitializeComponent();
-          scalebase = keyname.ScaleBase;
+          scalebase = keyname.muscialNote;
             CB_InstrumentInit();
+            CB_BeatInit();
+            //초기 4분음표를 주기 위하여
+            keyname.Key_Beat = (MusicBeat)Enum.Parse(typeof(MusicBeat), CB_Beat.Text);
 
+        }
+       private void CB_BeatInit()
+       {
+            foreach(string s  in Enum.GetNames(typeof(MusicBeat)))
+            {
+                CB_Beat.Items.Add(s);
+            }
+            CB_Beat.SelectedItem = CB_Beat.Items[5];
         }
         private void CB_InstrumentInit()
         {
@@ -47,7 +59,24 @@ namespace Recommended_musical_scale_using_MIDI
             {
                 throw new NotFiniteNumberException("잘못된 세이브파일입니다.");
             }
+            MusicalTrack ms = new MusicalTrack(sf.FileName);
+            foreach (Note note in scalebase)
+            {
+                if (note is NomalNote)
+                {
+                    ms.AddNote(note);
+                }
+                else if(note is Harmony)
+                {
+                    throw new KeyNotFoundException("미구현");
+                }
+
+            }
             
+            MidiChunkData mc = new MidiChunkData(ms,sf.FileName);
+           
+            mc.SaveMidiFile(sf.FileName);
+
         }
 
         private void BT_ChangeInstrument_Click(object sender, RoutedEventArgs e)
@@ -65,6 +94,12 @@ namespace Recommended_musical_scale_using_MIDI
             keyname.Focus();
 
 
+        }
+
+        private void BT_Beat_Click(object sender, RoutedEventArgs e)
+        {
+            keyname.Key_Beat = (MusicBeat)Enum.Parse(typeof(MusicBeat),CB_Beat.Text);
+            keyname.Focus();
         }
     }
 }

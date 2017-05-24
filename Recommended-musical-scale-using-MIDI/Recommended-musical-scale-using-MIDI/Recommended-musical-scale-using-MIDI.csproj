@@ -112,6 +112,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MidiChunkData\MidiChunkDataLib.csproj">
+      <Project>{3A57B231-ADB5-4930-9375-A88657E270C7}</Project>
+      <Name>MidiChunkDataLib</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MidiPlayer\MidiPlayer.csproj">
       <Project>{969B705B-0F22-4882-9051-0E2CAFD24C14}</Project>
       <Name>MidiPlayer</Name>

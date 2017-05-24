@@ -13,6 +13,9 @@
         <Button x:Name="BT_Save" Content="세이브" HorizontalAlignment="Left" Margin="432,10,0,0" VerticalAlignment="Top" Width="75" Click="BT_Save_Click"/>
         <ComboBox x:Name="CB_Instrument" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="120"/>
         <Button x:Name="BT_ChangeInstrument" Content="악기변경" HorizontalAlignment="Left" Margin="153,10,0,0" VerticalAlignment="Top" Width="75" Click="BT_ChangeInstrument_Click"/>
+        <ComboBox x:Name="CB_Beat" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="10,48,0,0"/>
+        <Button x:Name="BT_Beat" Content="박자변경" HorizontalAlignment="Left" Margin="153,48,0,0" VerticalAlignment="Top" Width="75" Click="BT_Beat_Click"/>
+        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="630,220,-188,0" VerticalAlignment="Top" Width="75"/>
 
     </Grid>
 </Window>
