@@ -11,7 +11,7 @@ namespace MusicalTrackLib
     {
         public List<Tempo> tempoList { get; set; }
         public string key { get; set; }
-        public List<TimeSignature> timeSignatureList { get; set; }
+        public List<TimeSignature> timeSignatureList { get; set; }//시그니쳐
         public int staffType { get; set; } //보표 종류 (0=높은음자리, 1=낮은음자리, 2=높은음자리+낮은음자리)
 
         /// <summary>

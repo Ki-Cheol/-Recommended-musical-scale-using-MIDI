@@ -60,6 +60,14 @@ namespace Recommended_musical_scale_using_MIDI
                 throw new NotFiniteNumberException("잘못된 세이브파일입니다.");
             }
             MusicalTrack ms = new MusicalTrack(sf.FileName);
+            ms.instType = (int)(Instrument)Enum.Parse(typeof(Instrument) ,CB_Instrument.Text);
+           
+           MusicInfo msi= ms.musicInfo;
+            // stafftype 
+            msi.staffType = 0;
+
+            MessageBox.Show(msi.key.ToString()+msi.staffType.ToString()+msi.tempoList.ToString()+msi.timeSignatureList.ToString());
+
             foreach (Note note in scalebase)
             {
                 if (note is NomalNote)
