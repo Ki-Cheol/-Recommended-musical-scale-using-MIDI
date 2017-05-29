@@ -109,5 +109,19 @@ namespace Recommended_musical_scale_using_MIDI
             keyname.Key_Beat = (MusicBeat)Enum.Parse(typeof(MusicBeat),CB_Beat.Text);
             keyname.Focus();
         }
+
+        private void BT_Lead_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "*.mid|*.mid|*.*|*.*";
+            if (ofd.ShowDialog() != true)
+            {
+                return;
+            }
+           
+            ReadMidi midiread = new ReadMidi(ofd.FileName);
+           
+            midiread.Show();
+        }
     }
 }
