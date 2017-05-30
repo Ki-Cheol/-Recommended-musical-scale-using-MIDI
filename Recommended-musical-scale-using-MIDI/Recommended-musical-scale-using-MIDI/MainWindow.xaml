@@ -16,6 +16,7 @@
         <ComboBox x:Name="CB_Beat" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="10,48,0,0"/>
         <Button x:Name="BT_Beat" Content="박자변경" HorizontalAlignment="Left" Margin="153,48,0,0" VerticalAlignment="Top" Width="75" Click="BT_Beat_Click"/>
         <Button x:Name="BT_Lead" Content="읽기" HorizontalAlignment="Left" Margin="432,48,0,0" VerticalAlignment="Top" Width="75" Click="BT_Lead_Click"/>
+        <Button x:Name="BT_OpenSerial" Content="시리얼연결" HorizontalAlignment="Left" Margin="249,10,0,0" VerticalAlignment="Top" Width="75" Click="BT_OpenSerial_Click"/>
 
     </Grid>
 </Window>

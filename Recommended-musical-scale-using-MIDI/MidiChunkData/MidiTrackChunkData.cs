@@ -1092,8 +1092,6 @@ namespace MidiChunkDataLib
             return point;
         }
         #endregion
-
-
         #region Get받아오는타입
         private string GetId(BinaryReader br)
         {
@@ -1106,7 +1104,6 @@ namespace MidiChunkDataLib
             return Length;
         }
         #endregion
-
         #region 업뎃이전
         public string[] ReadEvent(BinaryReader br)
         {
@@ -1160,6 +1157,11 @@ namespace MidiChunkDataLib
             }
             EndTrack(bw);
         }
+        /// <summary>
+        /// 노트온 테스트 쓰레기코드
+        /// </summary>
+        /// <param name="ms">음계</param>
+        /// <param name="bw">박자</param>
         public void NoteOn(MusicScale ms, BinaryWriter bw)
         {
             byte musical = (byte)ms;
@@ -1175,11 +1177,6 @@ namespace MidiChunkDataLib
 
         }
         #endregion
-
-
-
-
-
         #region 저장
 
         /// <summary>

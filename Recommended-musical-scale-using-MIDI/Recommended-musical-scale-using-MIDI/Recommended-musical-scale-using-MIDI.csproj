@@ -60,6 +60,9 @@
     <Compile Include="ReadMidi.xaml.cs">
       <DependentUpon>ReadMidi.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SerialPortConnect.xaml.cs">
+      <DependentUpon>SerialPortConnect.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UDT_Key.xaml.cs">
       <DependentUpon>UDT_Key.xaml</DependentUpon>
     </Compile>
@@ -79,6 +82,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="ReadMidi.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SerialPortConnect.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

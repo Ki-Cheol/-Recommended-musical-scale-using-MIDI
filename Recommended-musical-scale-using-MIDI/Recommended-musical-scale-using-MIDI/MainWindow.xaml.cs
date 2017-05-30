@@ -123,5 +123,11 @@ namespace Recommended_musical_scale_using_MIDI
            
             midiread.Show();
         }
+
+        private void BT_OpenSerial_Click(object sender, RoutedEventArgs e)
+        {
+            SerialPortConnect sc = new SerialPortConnect();
+            sc.ShowDialog();
+        }
     }
 }
