@@ -8,9 +8,9 @@ using MusicalTrackLib;
 
 namespace MidiChunkDataLib
 {
-  public class MidiTrackChunkData
+    public class MidiTrackChunkData
     {
-        
+
         public int trackNum { get; set; }  //트랙번호
         public string trackName { get; private set; } //트랙이름
         public int trackSize { get; private set; } //Track의 크기
@@ -42,7 +42,7 @@ namespace MidiChunkDataLib
         /// 생성부분
         /// </summary>
         /// <param name="bw"></param>
-        public MidiTrackChunkData(BinaryWriter bw, Instrument myins=Instrument.GrandPiano)
+        public MidiTrackChunkData(BinaryWriter bw, Instrument myins = Instrument.GrandPiano)
         {
             byte[] ID = new byte[4];
             ID[0] = 77;
@@ -50,7 +50,7 @@ namespace MidiChunkDataLib
             ID[2] = 114;
             ID[3] = 107;
             bw.Write(ID);
-            instType =(int)myins;
+            instType = (int)myins;
         }
         #region 미디 생성 분석
         /// <summary>
@@ -296,15 +296,15 @@ namespace MidiChunkDataLib
         /// <param name="br"></param>
         public MidiTrackChunkData(BinaryReader br)
         {
-           
+
             TrackID = GetId(br);
-            if(TrackID != "MTrk")
+            if (TrackID != "MTrk")
             {
                 new NotFiniteNumberException("잘못된 Track파일입니다.");
                 return;
             }
             trackSize = (GetLength(br));
-                
+
         }
         #endregion
         public MidiTrackChunkData(MusicalTrack mt, int timedivision, int trackCount)
@@ -582,7 +582,7 @@ namespace MidiChunkDataLib
                             }
 
                             // 쉼표 (위치가 0이 아닌 노트온이면서 음을 내고있는 노트가 없을때)
-                            if (nowNoteOnCount == 0 && nt.position != 0 && (nt.time + notMidiEventsTime) != 0) 
+                            if (nowNoteOnCount == 0 && nt.position != 0 && (nt.time + notMidiEventsTime) != 0)
                             {
                                 RestNote rn = new RestNote((MusicBeat)Round(Get32NoteCount(TimeDivision, nt.time + notMidiEventsTime)));
                                 rn.staffPosition = beforNoteOffstaffPosition;
@@ -596,17 +596,17 @@ namespace MidiChunkDataLib
                             {
                                 if (musicalTrack.notelist[musicalTrack.notelist.Count - 1] is Harmony) //마지막으로 추가된 노트가 하모니 일경우
                                 {
-                                    NomalNote nn = new NomalNote(nt.noteEventNum,(MusicBeat)Round(Get32NoteCount(TimeDivision, nt.term)), (MusicScale)nt.data1);
+                                    NomalNote nn = new NomalNote(nt.noteEventNum, (MusicBeat)Round(Get32NoteCount(TimeDivision, nt.term)), (MusicScale)nt.data1);
                                     nn.staffPosition = nt.staffPosition;
-                                    ((Harmony)musicalTrack.notelist[musicalTrack.notelist.Count-1]).nomalNotes.Add(nn);
+                                    ((Harmony)musicalTrack.notelist[musicalTrack.notelist.Count - 1]).nomalNotes.Add(nn);
                                 }
                                 else
                                 {
                                     Harmony hmn = new Harmony();
                                     hmn.staffPosition = nt.staffPosition;
                                     NomalNote nn1 = new NomalNote(((NomalNote)musicalTrack.notelist[musicalTrack.notelist.Count - 1]).noteNum,
-                                                                  ((NomalNote)musicalTrack.notelist[musicalTrack.notelist.Count - 1]).beat, 
-                                                                  ((NomalNote)musicalTrack.notelist[musicalTrack.notelist.Count - 1]).scale, 
+                                                                  ((NomalNote)musicalTrack.notelist[musicalTrack.notelist.Count - 1]).beat,
+                                                                  ((NomalNote)musicalTrack.notelist[musicalTrack.notelist.Count - 1]).scale,
                                                                   ((NomalNote)musicalTrack.notelist[musicalTrack.notelist.Count - 1]).afterNoteTie);
                                     nn1.staffPosition = musicalTrack.notelist[musicalTrack.notelist.Count - 1].staffPosition;
                                     hmn.nomalNotes.Add(nn1);
@@ -621,7 +621,7 @@ namespace MidiChunkDataLib
 
                             else//동시음이 아닐때
                             {
-                                NomalNote nn = new NomalNote(nt.noteEventNum,(MusicBeat)Round(Get32NoteCount(TimeDivision, nt.term)), (MusicScale)nt.data1);
+                                NomalNote nn = new NomalNote(nt.noteEventNum, (MusicBeat)Round(Get32NoteCount(TimeDivision, nt.term)), (MusicScale)nt.data1);
                                 nn.staffPosition = nt.staffPosition;
                                 musicalTrack.notelist.Add(nn);
                             }
@@ -704,7 +704,7 @@ namespace MidiChunkDataLib
             }
         }
 
-        
+
         #endregion
         /// <summary>
         /// 미디이벤트분석
@@ -930,6 +930,11 @@ namespace MidiChunkDataLib
             events.Add(mtev);
             return true;
         }
+        /// <summary>
+        /// 타임시그니쳐
+        /// </summary>
+        /// <param name="data"></param>
+        /// <param name="mtev"></param>
         private void GetTimeSignature(byte[] data, MetaEvent mtev)
         {
             TimeSignature ts = new TimeSignature();
@@ -1138,7 +1143,7 @@ namespace MidiChunkDataLib
 
         public void NoteEvent(List<MusicScale> NoteList, BinaryWriter bw)
         {
-            int notecunt = NoteList.Count * 8 + 4    +3;
+            int notecunt = NoteList.Count * 8 + 4 + 3;
             bw.Write((byte)((notecunt / 256 / 256 / 256) % 256));
             bw.Write((byte)((notecunt / 256 / 256) % 256));
             bw.Write((byte)((notecunt / 256) % 256));
@@ -1211,7 +1216,7 @@ namespace MidiChunkDataLib
                     byteList.Add((byte)me.msg[1]);
 
                     byteList.Add((byte)me.dataLen);
-                   
+
 
                     foreach (byte bt in me.data)
                     {
@@ -1321,419 +1326,7 @@ namespace MidiChunkDataLib
 
         #endregion
 
-        #region 청크데이타필요부분
-        public void RemoveMetaEventType(string metaEventType)
-        {
-            for (int i = 0; i < events.Count; i++)
-            {
-                if (events[i].type == metaEventType)
-                {
-                    if (events[i].time != 0 && events[i + 1] != null)
-                    {
-                        events[i + 1].time += events[i].time;
-                    }
-                    events.RemoveAt(i);
-                }
-            }
-        }
-        public void AddMetaEvent(string metaEventType, string strData)
-        {
-            MetaEvent me = new MetaEvent();
-            me.type = metaEventType;
-            me.trackNum = trackNum;
-            me.staffPosition = new StaffPosition();
-
-            me.dataLen = strData.Length;
-            me.data = ConvertToByteArrbyString(strData);
-
-            switch (metaEventType)
-            {
-                case "Writer": metaEventInfo.writer = strData; me.msg[1] = 1; break;
-                case "Copyright": metaEventInfo.copyright = strData; me.msg[1] = 2; break;
-                case "TrackName": metaEventInfo.trackNames[trackNum] = strData; me.msg[1] = 3; break;
-                case "Lyric": metaEventInfo.lyric = strData; me.msg[1] = 5; break;
-                //case "ProgramName": metaEventInfor.programname = strData; break;
-                //case "DeviceName": metaEventInfor.devicename = strData; break;
-                default: throw new NotImplementedException("미구현");
-            }
-
-            events.Insert(0, me);
-        }
-        internal void ChangeNoteScale(int noteNum, MusicScale scale)
-        {
-            foreach (Event evt in events)
-            {
-                if (evt is MidiEvent)
-                {
-                    if (((MidiEvent)evt).noteEventNum == noteNum)
-                    {
-                        ((MidiEvent)evt).data1 = (int)scale;
-                    }
-                }
-            }
-
-            foreach (Note nt in musicalTrack.notelist)
-            {
-                if (nt is Harmony)
-                {
-                    foreach (NomalNote nnt in ((Harmony)nt).nomalNotes)
-                    {
-                        if (nnt.noteNum == noteNum)
-                        {
-                            nnt.scale = scale;
-                            return;
-                        }
-                    }
-                }
-                else if (nt is NomalNote)
-                {
-                    if (((NomalNote)nt).noteNum == noteNum)
-                    {
-                        ((NomalNote)nt).scale = scale;
-                        return;
-                    }
-                }
-            }
-        }
-        /// <summary>
-        /// 박자가 줄어들면 빈 부분에 쉼표가 생기고, 늘어나면 늘어난 만큼 뒤에 있던 음표들의 박자가 사라짐
-        /// </summary>
-        /// <param name="noteNum"></param>
-        /// <param name="beat"></param>
-        internal void ChangeNoteBeat(int noteNum, MusicBeat beat) 
-        {
-            int beforPosition = 0;
-            int afterPosition = 0;
-            int beatGabTime = 0;
-
-            NoteOffPositionReSet(noteNum, beat, ref beatGabTime, ref beforPosition, ref afterPosition);
-
-            if (beatGabTime > 0)
-            {
-                influenceEventSet(beforPosition, afterPosition);
-            }
-
-            EventsSortByTime();
-            EventsTimeInfoReSet();
-            SetMusicalTrackMi();
-            SetMusicalTrackNote();
-        }
-        /// <summary>
-        /// 박자가 줄어들면 앞 음표들이 땡겨지고, 늘어나면 늘어난 만큼 뒤에 있던 음표들이 미루어짐
-        /// </summary>
-        /// <param name="noteNum"></param>
-        /// <param name="beat"></param>
-        /// <param name="afterNotesPull"></param>
-        internal void ChangeNoteBeat2(int noteNum, MusicBeat beat, bool afterNotesPull) 
-        {
-            int beforPosition = 0;
-            int afterPosition = 0;
-            int beatGabTime = 0;
-
-            NoteOffPositionReSet(noteNum, beat, ref beatGabTime, ref beforPosition, ref afterPosition);
-
-            if (afterNotesPull)
-            {
-                ChangedNoteAfterNotesReSet(noteNum, beforPosition, beatGabTime);
-            }
-            else if (beatGabTime > 0)
-            {
-                ChangedNoteAfterNotesReSet(noteNum, beforPosition, beatGabTime);
-            }
-
-            EventsSortByTime();
-            EventsTimeInfoReSet();
-            SetMusicalTrackMi();
-            SetMusicalTrackNote();
-        }
-
-        private void ChangedNoteAfterNotesReSet(int noteNum, int beforPosition, int beatGabTime)
-        {
-            bool nowNoteOnEventsAdd = true;
-            List<int> nowNoteOnEventsNoteNum = new List<int>();
-
-            foreach (Event evt in events)
-            {
-                if (evt is MidiEvent)
-                {
-                    MidiEvent mdevt = evt as MidiEvent;
-                    if (nowNoteOnEventsAdd && mdevt.position >= beforPosition) { nowNoteOnEventsAdd = false; }
-                    if (mdevt.msg == 144 && mdevt.data2 != 0)
-                    {
-                        if (nowNoteOnEventsAdd) { nowNoteOnEventsNoteNum.Add(mdevt.noteEventNum); }
-                    }
-                    else if (mdevt.msg == 128 || (mdevt.msg == 144 && mdevt.data2 == 0))
-                    {
-                        nowNoteOnEventsNoteNum.Remove(mdevt.noteEventNum);
-                    }
-                }
-
-                if (!nowNoteOnEventsAdd)
-                {
-                    if (evt is MetaEvent)
-                    {
-                        evt.position = evt.position + beatGabTime;
-                    }
-                    else if (((MidiEvent)evt).noteEventNum != noteNum)
-                    {
-                        if (!isBeforNoteOn(nowNoteOnEventsNoteNum, ((MidiEvent)evt).noteEventNum))
-                        {
-                            evt.position = evt.position + beatGabTime;
-                        }
-                    }
-                }
-            }
-        }
-
-        private bool isBeforNoteOn(List<int> nowNoteOnEventsNoteNum, int noteNum)
-        {
-            foreach (int noteOnNum in nowNoteOnEventsNoteNum)
-            {
-                if (noteOnNum == noteNum)
-                {
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        private void NoteOffPositionReSet(int noteNum, MusicBeat beat, ref int beatGabTime, ref int beforPosition, ref int afterPosition)
-        {
-            int changedBeatTime = ((int)beat) * (TimeDivision / 8);
-
-            foreach (Event evt in events)
-            {
-                if (evt is MidiEvent)
-                {
-                    MidiEvent mdevt = evt as MidiEvent;
-
-                    if (mdevt.noteEventNum == noteNum)
-                    {
-                        if (mdevt.msg == 144 && mdevt.data2 != 0)
-                        {
-                            beatGabTime = changedBeatTime - mdevt.term;
-                            ((MidiEvent)evt).term = changedBeatTime;
-                        }
-                        else if (mdevt.msg == 128 || (mdevt.msg == 144 && mdevt.data2 == 0))
-                        {
-                            beforPosition = evt.position;
-                            afterPosition = evt.position = evt.position + beatGabTime;
-                        }
-                    }
-                }
-            }
-        }
-
-        private void influenceEventSet(int beforPosition, int afterPosition)
-        {
-            Dictionary<int, Event> deleEventDistinction = new Dictionary<int, Event>();
-            List<Event> influEvents = new List<Event>();
-
-
-            foreach (Event evt in events)
-            {
-                if (evt.position >= beforPosition && evt.position <= afterPosition)
-                {
-                    influEvents.Add(evt);
-                }
-                if (evt.position > afterPosition) { break; }
-            }
-
-            foreach (Event evt in influEvents)
-            {
-                if (evt is MidiEvent)
-                {
-                    int key = ((MidiEvent)evt).noteEventNum;
-                    if (deleEventDistinction.ContainsKey(key))
-                    {
-                        events.Remove(deleEventDistinction[key]);
-                        events.Remove(evt);
-                        deleEventDistinction.Remove(key);
-                    }
-                    else
-                    {
-                        deleEventDistinction[key] = evt;
-                    }
-                }
-            }
-
-            foreach (KeyValuePair<int, Event> pair in deleEventDistinction)
-            {
-                if (((MidiEvent)pair.Value).msg == 144 && ((MidiEvent)pair.Value).data2 != 0)
-                {
-                    int influEventBeforPosition = pair.Value.position;
-                    pair.Value.position = afterPosition;
-                    ((MidiEvent)pair.Value).term = ((MidiEvent)pair.Value).term - (afterPosition - influEventBeforPosition);
-                }
-            }
-        }
-
-        private void EventsSortByTime()
-        {
-            events.Sort(new EventComparer());
-        }
-
-        private void EventsTimeInfoReSet()
-        {
-            cumulativeFrames = 0;
-            cumulativetime = 0;
-
-            int beforEventTimePosition = 0;
-
-            foreach (Event ev in events)
-            {
-                SetTimeInfo(ev, ev.position - beforEventTimePosition);
-                beforEventTimePosition = ev.position;
-            }
-        }
-
-        public void ChangeInstType(int InstType)
-        {
-            this.instType = InstType;
-            foreach (Event evt in events)
-            {
-                if (evt is MidiEvent && ((MidiEvent)evt).msg == 192)
-                {
-                    ((MidiEvent)evt).data1 = InstType;
-                }
-            }
-
-            musicalTrack.instType = InstType;
-        }
-
-        internal void RemoveNote(int noteNum, bool afterNotesPull)
-        {
-            int noteOnIndex = 0;
-            int noteOffIndex = 0;
-
-            int count = 0;
-            foreach (Event evt in events)
-            {
-                if (evt is MidiEvent)
-                {
-                    MidiEvent mdevt = evt as MidiEvent;
-                    if (mdevt.noteEventNum == noteNum && mdevt.msg == 144 && mdevt.data2 != 0)
-                    {
-                        noteOnIndex = count;
-                    }
-                    else if (mdevt.noteEventNum == noteNum && (mdevt.msg == 128 || (mdevt.msg == 144 && mdevt.data2 == 0)))
-                    {
-                        noteOffIndex = count;
-                    }
-                }
-                count++;
-            }
-
-            if (afterNotesPull)
-            {
-                Dictionary<int, MidiEvent> noteOnBufDic = new Dictionary<int, MidiEvent>();
-
-                for (int i = 0; i < noteOnIndex; i++)
-                {
-                    if (events[i] is MidiEvent)
-                    {
-                        MidiEvent mdevt = events[i] as MidiEvent;
-                        if (mdevt.msg == 144 && mdevt.data2 != 0)
-                        {
-                            noteOnBufDic[mdevt.noteEventNum] = mdevt;
-                        }
-                        else if (mdevt.msg == 128 || (mdevt.msg == 144 && mdevt.data2 == 0))
-                        {
-                            noteOnBufDic.Remove(mdevt.noteEventNum);
-                        }
-                    }
-                }
-
-                int positionDistinction = events[noteOnIndex + 1].position - events[noteOnIndex].position;
-
-                for (int i = noteOnIndex + 1; i < events.Count - 1; i++)
-                {
-                    events[i].position -= positionDistinction;
-
-                    if (events[i] is MidiEvent)
-                    {
-                        MidiEvent mdevt = events[i] as MidiEvent;
-
-                        if (mdevt.msg == 128 || (mdevt.msg == 144 && mdevt.data2 == 0))
-                        {
-                            foreach (KeyValuePair<int, MidiEvent> pair in noteOnBufDic)
-                            {
-                                if (mdevt.noteEventNum == pair.Key)
-                                {
-                                    events[i].position = pair.Value.position + pair.Value.term;
-                                }
-                            }
-                            if (noteOnBufDic.ContainsKey(mdevt.noteEventNum))
-                            {
-                                noteOnBufDic.Remove(mdevt.noteEventNum);
-                            }
-                        }
-                    }
-                }
-
-                events.RemoveAt(noteOnIndex);
-                events.RemoveAt(noteOffIndex - 1);
-
-                EventsSortByTime();
-                EventsTimeInfoReSet();
-            }
-            else
-            {
-                events[noteOnIndex + 1].time += events[noteOnIndex].time;
-                events[noteOffIndex + 1].time += events[noteOffIndex].time;
-
-                events.RemoveAt(noteOnIndex);
-                events.RemoveAt(noteOffIndex - 1);
-            }
-
-            SetMusicalTrackMi();
-            SetMusicalTrackNote();
-        }
-        internal sealed class EventComparer : IComparer<Event>
-        {
-            public int Compare(Event x, Event y)
-            {
-                if (x == null || y == null)
-                {
-                    throw new ApplicationException("Event 가 아닙니다.");
-                }
-
-                if (x.position != y.position)
-                {
-                    return x.position.CompareTo(y.position);
-                }
-
-                if (x is MidiEvent && y is MidiEvent)
-                {
-                    if (((MidiEvent)x).msg == ((MidiEvent)y).msg || ((MidiEvent)x).msg == 192 || ((MidiEvent)y).msg == 192)
-                    {
-                        return ((MidiEvent)x).data2.CompareTo(((MidiEvent)y).data2);
-                    }
-
-                    return ((MidiEvent)x).msg.CompareTo(((MidiEvent)y).msg);
-                }
-                else if (x is MetaEvent && y is MetaEvent)
-                {
-                    return x.position.CompareTo(y.position);
-                }
-                else if (x is MetaEvent && y is MidiEvent)
-                {
-                    return ((MetaEvent)x).msg[1].CompareTo(((MidiEvent)y).msg);
-                }
-                else if (x is MidiEvent && y is MetaEvent)
-                {
-                    return ((MidiEvent)y).msg.CompareTo(((MetaEvent)x).msg[1]);
-                }
-
-                return x.position.CompareTo(y.position);
-            }
-        }
     }
-
-    #endregion
-        
-
-
 }
 
 

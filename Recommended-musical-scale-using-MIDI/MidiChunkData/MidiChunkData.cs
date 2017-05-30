@@ -82,25 +82,14 @@ namespace MidiChunkDataLib
             }
             return TrackCh;
         }
-       
-        //public void ModifyMidiname(string midiname)
-        //{
-        //    this.midiName = midiname;
-        //}
-        //public void ModifyMetaEvent(string metaEventType, string strData)
-        //{
-        //    foreach (MidiTrackChunkData track in trackList)
-        //    {
-        //        track.RemoveMetaEventType(metaEventType);
-        //    }
-        //    trackList[0].AddMetaEvent(metaEventType, strData);
-        //}
-        //public void ModifyMetaEvent(string metaEventType, string strData, int trackNum)
-        //{
-        //    trackList[trackNum].RemoveMetaEventType(metaEventType);
-        //    trackList[trackNum].AddMetaEvent(metaEventType, strData);
-        //}
-
+        /// <summary>
+        /// 다른이름 저장시 이름변경
+        /// </summary>
+        /// <param name="midiname">바꿀 파일명</param>
+        public void ModifyMidiname(string midiname)
+        {
+            this.midiName = midiname;
+        }
         public List<MusicalTrack> GetMusicalTrackList()
         {
             List<MusicalTrack> mtList = new List<MusicalTrack>();
@@ -132,34 +121,9 @@ namespace MidiChunkDataLib
         /// <param name="scale">음계 MusicScale</param>
         public void ChangeNoteScale(int trackNum, int noteNum, MusicScale scale)
         {
-            trackList[trackNum].ChangeNoteScale(noteNum, scale);
+            throw new NotFiniteNumberException("미구현");
         }
-        /// <summary>
-        /// 노트 박자변경
-        /// </summary>
-        /// <param name="trackNum">트랙선택</param>
-        /// <param name="noteNum">노트cnt</param>
-        /// <param name="beat">MusicBeat</param>
-        public void ChangeNoteBeat(int trackNum, int noteNum, MusicBeat beat)
-        {
-            trackList[trackNum].ChangeNoteBeat(noteNum, beat);
-        }
-
-        public void ChangeNoteBeat2(int trackNum, int noteNum, MusicBeat beat, bool afterNotesPull)
-        {
-            trackList[trackNum].ChangeNoteBeat2(noteNum, beat, afterNotesPull);
-        }
-        /// <summary>
-        /// 노트제거
-        /// </summary>
-        /// <param name="trackNum">트랙선택</param>
-        /// <param name="noteNum">노트cnt</param>
-        /// <param name="afterNotesPull">악보의eof</param>
-        public void RemoveNote(int trackNum, int noteNum, bool afterNotesPull)
-        {
-            trackList[trackNum].RemoveNote(noteNum, afterNotesPull);
-        }
-
+      
         /// <summary>
         /// 트렉추가
         /// </summary>
@@ -181,68 +145,6 @@ namespace MidiChunkDataLib
             header.TrackCountIncrease();
 
         }
-        /// <summary>
-        /// 트렉삭제
-        /// </summary>
-        /// <param name="trackNum">트렉cnt</param>
-        public void RemoveTrack(int trackNum)
-        {
-            trackList.RemoveAt(trackNum);
 
-            List<int> removechlit = new List<int>();
-            foreach (KeyValuePair<int, List<int>> pair in MidiTrackChunkData.ChDic)
-            {
-                foreach (int track in pair.Value)
-                {
-                    if (track == trackNum)
-                    {
-                        removechlit.Add(pair.Key);
-                    }
-                }
-            }
-
-            foreach (int ch in removechlit)
-            {
-                MidiTrackChunkData.ChDic[ch].Remove(trackNum);
-            }
-
-
-            foreach (MidiTrackChunkData track in trackList)
-            {
-                if (track.trackNum > trackNum)
-                {
-                    track.trackNum--;
-                }
-            }
-
-            for (int i = 0; i < 16; i++)
-            {
-                for (int j = 0; j < MidiTrackChunkData.ChDic[i].Count; j++)
-                {
-                    if (MidiTrackChunkData.ChDic[i][j] > trackNum)
-                    {
-                        MidiTrackChunkData.ChDic[i][j] = MidiTrackChunkData.ChDic[i][j] - 1;
-                    }
-                }
-            }
-
-            header.TrackCountDecrease();
-
-            string[] newTrackNames = new string[header.trackcount];
-
-            for (int i = 0; i < MidiTrackChunkData.metaEventInfo.trackNames.Length; i++)
-            {
-                if (i < trackNum)
-                {
-                    newTrackNames[i] = MidiTrackChunkData.metaEventInfo.trackNames[i];
-                }
-                else if (i > trackNum)
-                {
-                    newTrackNames[i - 1] = MidiTrackChunkData.metaEventInfo.trackNames[i];
-                }
-            }
-            MidiTrackChunkData.metaEventInfo.trackNames = newTrackNames;
-
-        }
     }
 }
