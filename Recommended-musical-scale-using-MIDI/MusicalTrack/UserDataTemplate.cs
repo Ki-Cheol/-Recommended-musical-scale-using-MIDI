@@ -51,15 +51,16 @@ namespace MusicalTrackLib
 
     struct DB_Note
     {
-        int scale;
+        int Scale;
         int MuscialBeat;
-        int cnt;
+        int Notecnt;
     }
     public enum MusicBeat
     {
         note32 = 1, note16, note16dot, note8, note8dot = 6, note4 = 8, note4dot = 12, note2 = 16,
         note2dot = 24, onenote = 32
     }
+
 
     public struct StaffPosition //(악보에서의 위치)
     {

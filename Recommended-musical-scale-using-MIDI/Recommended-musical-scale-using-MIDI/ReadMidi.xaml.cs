@@ -113,8 +113,8 @@ namespace Recommended_musical_scale_using_MIDI
                     if(note is NomalNote)
                     {
                         NomalNote nmnote = note as NomalNote;
-                        TEST.Text += (int)nmnote.beat+"\n";
-                        TEST.Text += (int)nmnote.scale + "\n";
+                        TEST.Text += nmnote.beat+"\n";
+                        TEST.Text += nmnote.scale + "\n";
                     }
                 }
 

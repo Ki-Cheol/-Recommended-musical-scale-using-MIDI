@@ -123,7 +123,7 @@ namespace MidiChunkDataLib
         {
             throw new NotFiniteNumberException("미구현");
         }
-      
+
         /// <summary>
         /// 트렉추가
         /// </summary>
@@ -143,8 +143,19 @@ namespace MidiChunkDataLib
 
             trackList.Add(new MidiTrackChunkData(mt, header.timedivision, trackList.Count));
             header.TrackCountIncrease();
-
         }
 
+        private void DeleteTrack(string trackName)
+        {
+            throw new NotImplementedException("미구현입니다.");
+        }
+        private void ModifiyChangeTrackName(MidiTrackChunkData mc)
+        {
+            throw new NotImplementedException("미구현입니다.");
+        }
+        private void ChangeBeat(int notecnt,List<Note>notelist,bool after=false)
+        {
+            throw new NotImplementedException("미구현입니다.");
+        }
     }
 }
