@@ -9,7 +9,11 @@ namespace MusicalTrackLib
     {
         public MusicBeat beat { get; set; }     //32분음표의 개수
         public bool afterNoteTie { get; set; }   //다음노트가 쉼표인지의 여부
-
+        /// <summary>
+        /// 쉼표
+        /// </summary>
+        /// <param name="Count32Note"></param>
+        /// <param name="afterNoteTie">미구현</param>
         public RestNote(MusicBeat Count32Note, bool afterNoteTie = false)
         {
             this.afterNoteTie = afterNoteTie;

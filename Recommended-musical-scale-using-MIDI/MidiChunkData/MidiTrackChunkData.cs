@@ -22,7 +22,8 @@ namespace MidiChunkDataLib
         public MusicalTrack musicalTrack { get; private set; }
 
         public static MidiMetaEventInfo metaEventInfo { get; set; } //메타이벤트
-        public static Dictionary<int, List<int>> ChDic { get; set; }
+        // key = 채널 list 16개의 채널
+        public static Dictionary<int, List<int>> ChDic { get; set; }//체널딕션 
 
         private Dictionary<string, MidiEvent> MidiNoteBufDic = new Dictionary<string, MidiEvent>();
 

@@ -26,6 +26,8 @@
             Loaded="TreeView_Loaded"
             SelectedItemChanged="TreeView_SelectedItemChanged"
             Background="AliceBlue"/>
+        <TextBlock x:Name="TEST" HorizontalAlignment="Left" Height="83" Margin="261,70,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="124"/>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="667,246,-222,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>

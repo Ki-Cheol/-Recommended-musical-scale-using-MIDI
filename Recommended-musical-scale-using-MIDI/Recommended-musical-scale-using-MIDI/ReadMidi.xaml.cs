@@ -25,7 +25,6 @@ namespace Recommended_musical_scale_using_MIDI
         public string FileName { get; private set; }
         MidiHeaderChunkData midiheader;
         List<MidiTrackChunkData> miditrack;
-        BinaryReader MidifileBr;
         public ReadMidi(string filename)
         {
             InitializeComponent();
@@ -40,6 +39,7 @@ namespace Recommended_musical_scale_using_MIDI
             TB_Fomat.Text = midiheader.format.ToString();
             TB_NoteLength.Text = midiheader.timedivision.ToString();
             TB_TrackCunt.Text = midiheader.trackcount.ToString();
+            
         }
 
         private void TreeView_Loaded(object sender, RoutedEventArgs e)
@@ -107,10 +107,19 @@ namespace Recommended_musical_scale_using_MIDI
 
                 var tree = sender as TreeView;
                 tree.Items.Add(item);
-                
-                
+                TEST.Text = string.Empty;
+                foreach (Note note in  mc.musicalTrack.notelist)
+                {
+                    if(note is NomalNote)
+                    {
+                        NomalNote nmnote = note as NomalNote;
+                        TEST.Text += (int)nmnote.beat+"\n";
+                        TEST.Text += (int)nmnote.scale + "\n";
+                    }
+                }
 
             }
+            
         }
         private void TreeView_SelectedItemChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
