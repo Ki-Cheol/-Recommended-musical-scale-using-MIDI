@@ -41,23 +41,23 @@ namespace MusicalTrackLib
         {
             int oct = (int)scale/12;
             int note = (int)scale % 12;
-            string notestr = string.Empty;
-            //디버깅용
-            switch (note)
-                        {
-                            case 0: notestr = "도"; break;
-                            case 1: notestr = "도#"; break;
-                            case 2: notestr = "레"; break;
-                            case 3: notestr = "레#"; break;
-                            case 4: notestr = "미"; break;
-                            case 5: notestr = "파"; break;
-                            case 6: notestr = "파#"; break;
-                            case 7: notestr = "솔"; break;
-                            case 8: notestr = "솔#"; break;
-                            case 9: notestr = "라"; break;
-                            case 10: notestr = "라#"; break;
-                            case 11: notestr = "시"; break;
-                        }
+            //string notestr = string.Empty;
+            ////디버깅용
+            //switch (note)
+            //            {
+            //                case 0: notestr = "도"; break;
+            //                case 1: notestr = "도#"; break;
+            //                case 2: notestr = "레"; break;
+            //                case 3: notestr = "레#"; break;
+            //                case 4: notestr = "미"; break;
+            //                case 5: notestr = "파"; break;
+            //                case 6: notestr = "파#"; break;
+            //                case 7: notestr = "솔"; break;
+            //                case 8: notestr = "솔#"; break;
+            //                case 9: notestr = "라"; break;
+            //                case 10: notestr = "라#"; break;
+            //                case 11: notestr = "시"; break;
+            //            }
 
 
             return scale + " Term(" + GetNoteTime((int)beat) + ")";

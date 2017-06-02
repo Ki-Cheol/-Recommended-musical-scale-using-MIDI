@@ -16,7 +16,7 @@ namespace MidiChunkDataLib
         public int format { get; private set; }//포멧타입(0~2)
         public int trackcount { get; private set; } //트랙 수
         public int timedivision { get; private set; } //timebae 정보 (4분음표의 타임)
-     
+
         public MidiHeaderChunkData(int trackCount)
         {
             Length = 4;
@@ -97,5 +97,5 @@ namespace MidiChunkDataLib
             bw.Write(headerByte);
         }
 
-    
+    }
 }
