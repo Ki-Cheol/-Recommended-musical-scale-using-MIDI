@@ -5,6 +5,12 @@ using System.Text;
 
 namespace MusicalTrackLib
 {
+    /// <summary>
+    /// 하모니에 대한 구현 부분 미흡
+    /// 
+    /// Note들간의 화음에 대한 이해 부족
+    /// NOTE간의 탬포 조정이 안되어있음 17-6-3 미수정 
+    /// </summary>
     public class Harmony : Note
     {
         public List<NomalNote> nomalNotes { get; set; }
@@ -55,7 +61,9 @@ namespace MusicalTrackLib
             return buf;
         }
     }
-
+    /// <summary>
+    /// IComparer 구현
+    /// </summary>
     internal sealed class NoteComparer : IComparer<NomalNote>
     {
         public int Compare(NomalNote x, NomalNote y)
