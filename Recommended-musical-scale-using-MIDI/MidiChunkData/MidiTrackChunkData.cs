@@ -907,6 +907,7 @@ namespace MidiChunkDataLib
 
             switch (msg)
             {
+                
                 //메타이벤트
                 case 0: metaEventInfo.sequenceNum = data; mtev.type = "SequenceNum"; break;
                 case 1: metaEventInfo.writer += new string(ConvertToCharArrbyByteArr(dataLen, data)); mtev.type = "Writer"; break;

@@ -7,6 +7,27 @@ using System.Text;
 
 namespace MidiChunkDataLib
 {
+
+              ////SequenceNum
+              ////  Writer
+              ////  Copyright
+              ////  TrackName
+              ////  InstrumentInfo
+              ////  Lyric
+              ////  Marker
+              ////  CuePoint
+              ////  ProgramName
+              ////  DeviceName
+              //// 32   MidiFreemax
+              ////   MidiPort
+              ////  33
+              ////  47 track end  return false
+              ////  81 Tempo
+              ////  84 SmpteOffSet
+              ////  88 TimeSignature
+              ////  89 KeySignature
+              ////  127 SeqEvent 
+              // ... 나머진 해독중 ..
     public class MidiMetaEventInfo
     {
         public byte[] sequenceNum { get; set; }       //시퀀스번호
