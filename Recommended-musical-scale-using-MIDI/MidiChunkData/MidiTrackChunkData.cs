@@ -52,6 +52,7 @@ namespace MidiChunkDataLib
             ID[3] = 107;
             bw.Write(ID);
             instType = (int)myins;
+
         }
         #region 미디 생성 분석
         private void SetTrackNameEvent(string trackname)
