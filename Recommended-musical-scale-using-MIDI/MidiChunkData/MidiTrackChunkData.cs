@@ -52,9 +52,30 @@ namespace MidiChunkDataLib
             ID[3] = 107;
             bw.Write(ID);
             instType = (int)myins;
-
         }
         #region 미디 생성 분석
+        /// <summary>
+        /// 미디생성 
+        /// </summary>
+        /// <param name="mi"></param>
+        /// <param name="timedivision"></param>
+        /// <param name="trackCount"></param>
+        /// <param name="midiName"></param>
+        public MidiTrackChunkData(MusicInfo mi, int timedivision, int trackCount, string midiName)
+        {
+            TrackInit();
+
+            TimeDivision = timedivision;
+            this.trackNum = trackCount;
+
+            SetTrackNameEvent(midiName);
+            SetkeySignatureEvent(mi.key);
+            SetTimeSignatureNTempoEvent(mi);
+
+            musicalTrack = new MusicalTrack(midiName);
+            musicalTrack.musicInfo = mi;
+            this.instType = musicalTrack.instType = -1;
+        }
         private void SetTrackNameEvent(string trackname)
         {
             if (metaEventInfo.trackNames.Length <= trackNum)
