@@ -8,7 +8,7 @@ namespace MusicalTrackLib
     public class Note
     {
         public StaffPosition staffPosition { get; set; }
-       
+
         protected string GetNoteTime(int tsNoteCount_r)
         {
             if (tsNoteCount_r > 32)
@@ -59,6 +59,26 @@ namespace MusicalTrackLib
                         }
                     }
             }
+
+            public override string ToString()
+        {
+            NomalNote no = this as NomalNote;
+            if (no != null)
+            {
+                return no.ToString();
+            }
+            else if (this is Harmony)
+            {
+                Harmony ha = this as Harmony;
+                ha.ToString();
+            }
+            else
+            {
+                RestNote re = this as RestNote;
+                re.ToString();
+            }
+            return null;
         }
     }
+
 }
