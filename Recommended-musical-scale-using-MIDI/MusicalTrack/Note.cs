@@ -59,6 +59,7 @@ namespace MusicalTrackLib
                         }
                     }
             }
+        }
 
             public override string ToString()
         {
