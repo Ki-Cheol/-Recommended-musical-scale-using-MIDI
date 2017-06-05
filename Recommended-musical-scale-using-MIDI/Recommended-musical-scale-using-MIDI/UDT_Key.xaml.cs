@@ -2,6 +2,7 @@
 using MusicalTrackLib;
 using System;
 using System.Collections.Generic;
+using System.IO.Ports;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -50,8 +51,23 @@ namespace Recommended_musical_scale_using_MIDI
         private List<MusicScale> scalebase = new List<MusicScale>();
         #endregion
 
+
+        SerialPort serial;
+        public void SetSial(SerialPort _port)
+        {
+            serial = _port;
+            serial.DataReceived += Serial_DataReceived;
+
+        }
+
         public MusicBeat Key_Beat { get; set; }
         public List<Note> muscialNote = new List<Note>();
+
+
+
+        string g_sRecvData = String.Empty;
+        delegate void SetTextCallBack(String text);
+
 
         public UDT_Key()
         {
@@ -60,6 +76,248 @@ namespace Recommended_musical_scale_using_MIDI
             KeyDown += MainWindow_KeyDown;
             KeyUp += MainWindow_KeyUp;
             MidiShortMsgPlayer.MidiOpen();
+            
+        }
+
+        private void Serial_DataReceived(object sender, SerialDataReceivedEventArgs e)
+        {
+            try
+            {
+                g_sRecvData = serial.ReadExisting();
+                if ((g_sRecvData != string.Empty)) // && (g_sRecvData.Contains('\n')))
+                {
+                    SetText(g_sRecvData);
+                }
+            }
+            catch (TimeoutException)
+            {
+                g_sRecvData = string.Empty;
+            }
+
+        }
+        private void BT_SrialTest_Click(object sender, RoutedEventArgs e)
+        {
+
+            if (serial.IsOpen)
+            {
+                serial.WriteLine(TB_SerialTest.Text);
+            }
+            else
+            {
+                BT_SrialTest.Content = "통신포트가 열리지 않았습니다";
+            }
+        }
+
+
+        private void SetText(string text)
+        {
+            if (TB_NoteList.Dispatcher.CheckAccess())
+            {
+                TB_NoteList.Text+=text;
+                SeriaL_keyGen(text);
+            }
+            else
+            {
+                SetTextCallBack d = new SetTextCallBack(SetText);
+                TB_NoteList.Dispatcher.Invoke(d, new object[] { text });
+            }
+        }
+        public void SeriaL_keyGen(string s)
+        {
+            int msgch = 144;
+            int velo = 120;
+            int buf2 = velo << 16;
+            switch (s)
+            {
+                case "Z":
+                    {
+
+
+                        int pitch = octavecount * 12 + 0;
+                        int buf1 = pitch << 8;
+
+                        if (!dodown)
+                        {
+                            dodown = true; MidiShortMsgPlayer.SendMidiShortMsg(buf1 + buf2 + msgch);
+                            TB_NoteList.Text += MusicScale.Do5 + " Term(" + Key_Beat + ")";
+
+                            muscialNote.Add(new NomalNote(Key_Beat, MusicScale.Do5));
+                        }
+                    }
+                    break;
+                case "S":
+                    {
+
+
+                        int pitch = octavecount * 12 + 1;
+                        int buf1 = pitch << 8;
+
+                        if (!doshapdown)
+                        {
+                            doshapdown = true; MidiShortMsgPlayer.SendMidiShortMsg(buf1 + buf2 + msgch);
+                            TB_NoteList.Text += MusicScale.DoSharp5 + " Term(" + Key_Beat + ")";
+
+                            muscialNote.Add(new NomalNote(Key_Beat, MusicScale.DoSharp5));
+                        }
+                    }
+                    break;
+                case "X":
+                    {
+
+                        int pitch = octavecount * 12 + 2;
+                        int buf1 = pitch << 8;
+                        if (!Redown)
+                        {
+                            Redown = true; MidiShortMsgPlayer.SendMidiShortMsg(buf1 + buf2 + msgch);
+                            TB_NoteList.Text += MusicScale.Re5 + " Term(" + Key_Beat + ")";
+
+                            muscialNote.Add(new NomalNote(Key_Beat, MusicScale.Re5));
+                        }
+                    }
+                    break;
+                case "D":
+                    {
+
+
+                        int pitch = octavecount * 12 + 3;
+                        int buf1 = pitch << 8;
+
+                        if (!reshapdown)
+                        {
+                            reshapdown = true; MidiShortMsgPlayer.SendMidiShortMsg(buf1 + buf2 + msgch);
+                            TB_NoteList.Text += MusicScale.ReSharp5 + " Term(" + Key_Beat + ")";
+                            muscialNote.Add(new NomalNote(Key_Beat, MusicScale.ReSharp5));
+                        }
+                    }
+                    break;
+                case "C":
+                    {
+
+                        int pitch = octavecount * 12 + 4;
+                        int buf1 = pitch << 8;
+                        if (!midown)
+                        {
+                            midown = true; MidiShortMsgPlayer.SendMidiShortMsg(buf1 + buf2 + msgch);
+                            TB_NoteList.Text += MusicScale.Mi5 + " Term(" + Key_Beat + ")";
+                            muscialNote.Add(new NomalNote(Key_Beat, MusicScale.Mi5));
+                        }
+                    }
+                    break;
+                case "V":
+                    {
+
+                        int pitch = octavecount * 12 + 5;
+                        int buf1 = pitch << 8;
+                        if (!fadown)
+                        {
+                            fadown = true; MidiShortMsgPlayer.SendMidiShortMsg(buf1 + buf2 + msgch);
+                            TB_NoteList.Text += MusicScale.Fa5 + " Term(" + Key_Beat + ")";
+                            muscialNote.Add(new NomalNote(Key_Beat, MusicScale.Fa5));
+                        }
+                    }
+                    break;
+                case "G":
+                    {
+
+
+                        int pitch = octavecount * 12 + 6;
+                        int buf1 = pitch << 8;
+
+                        if (!fashapdown)
+                        {
+                            fashapdown = true; MidiShortMsgPlayer.SendMidiShortMsg(buf1 + buf2 + msgch);
+                            TB_NoteList.Text += MusicScale.FaSharp5 + " Term(" + Key_Beat + ")";
+                            muscialNote.Add(new NomalNote(Key_Beat, MusicScale.FaSharp5));
+                        }
+                    }
+                    break;
+                case "B":
+                    {
+
+                        int pitch = octavecount * 12 + 7;
+                        int buf1 = pitch << 8;
+                        if (!soldown)
+                        {
+                            soldown = true; MidiShortMsgPlayer.SendMidiShortMsg(buf1 + buf2 + msgch);
+                            TB_NoteList.Text += MusicScale.Sol5 + " Term(" + Key_Beat + ")";
+                            muscialNote.Add(new NomalNote(Key_Beat, MusicScale.Sol5));
+                        }
+                    }
+                    break;
+                case "H":
+                    {
+
+
+                        int pitch = octavecount * 12 + 8;
+                        int buf1 = pitch << 8;
+
+                        if (!solshapdown)
+                        {
+                            solshapdown = true; MidiShortMsgPlayer.SendMidiShortMsg(buf1 + buf2 + msgch);
+                            TB_NoteList.Text += MusicScale.SolSharp5 + " Term(" + Key_Beat + ")";
+                            muscialNote.Add(new NomalNote(Key_Beat, MusicScale.SolSharp5));
+                        }
+                    }
+                    break;
+                case "N":
+                    {
+
+                        int pitch = octavecount * 12 + 9;
+                        int buf1 = pitch << 8;
+                        if (!ladown)
+                        {
+                            ladown = true; MidiShortMsgPlayer.SendMidiShortMsg(buf1 + buf2 + msgch);
+                            TB_NoteList.Text += MusicScale.La5 + " Term(" + Key_Beat + ")";
+                            muscialNote.Add(new NomalNote(Key_Beat, MusicScale.La5));
+                        }
+                    }
+                    break;
+                case "J":
+                    {
+
+
+                        int pitch = octavecount * 12 + 10;
+                        int buf1 = pitch << 8;
+
+                        if (!lashapdown)
+                        {
+                            lashapdown = true; MidiShortMsgPlayer.SendMidiShortMsg(buf1 + buf2 + msgch);
+
+                            TB_NoteList.Text += MusicScale.LaSharp5 + " Term(" + Key_Beat + ")";
+                            muscialNote.Add(new NomalNote(Key_Beat, MusicScale.LaSharp5));
+                        }
+                    }
+                    break;
+                case "M":
+                    {
+
+                        int pitch = octavecount * 12 + 11;
+                        int buf1 = pitch << 8;
+                        if (!sidown)
+                        {
+                            sidown = true; MidiShortMsgPlayer.SendMidiShortMsg(buf1 + buf2 + msgch);
+
+                            TB_NoteList.Text += MusicScale.Si5 + " Term(" + Key_Beat + ")";
+                            muscialNote.Add(new NomalNote(Key_Beat, MusicScale.Si5));
+                        }
+                    }
+                    break;
+                case ",":
+                    {
+
+                        int pitch = (octavecount + 1) * 12;
+                        int buf1 = pitch << 8;
+                        if (!do6down)
+                        {
+                            do6down = true; MidiShortMsgPlayer.SendMidiShortMsg(buf1 + buf2 + msgch);
+                            TB_NoteList.Text += MusicScale.Do6 + " Term(" + Key_Beat + ")";
+                            muscialNote.Add(new NomalNote(Key_Beat, MusicScale.Do6));
+                        }
+                    }
+                    break;
+                default: break;
+            }
+
         }
         public UDT_Key(List<MusicScale> scalebase)
         {
@@ -455,5 +713,6 @@ namespace Recommended_musical_scale_using_MIDI
         }
         #endregion
 
+        
     }
 }

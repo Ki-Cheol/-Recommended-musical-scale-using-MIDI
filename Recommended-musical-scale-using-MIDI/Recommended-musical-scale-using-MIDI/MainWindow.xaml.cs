@@ -4,6 +4,7 @@ using MidiPlayLib;
 using MusicalTrackLib;
 using System;
 using System.Collections.Generic;
+using System.IO.Ports;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,6 +28,12 @@ namespace Recommended_musical_scale_using_MIDI
         List<Note> scalebase;
         string notebox;
         List<DB_Note> dbNote =new List<DB_Note>();
+        SerialPort serial;
+
+
+
+
+
         public MainWindow()
         {
             InitializeComponent();
@@ -126,7 +133,11 @@ namespace Recommended_musical_scale_using_MIDI
         {
             SerialPortConnect sc = new SerialPortConnect();
             sc.ShowDialog();
+            serial=sc.GetPort();
+            keyname.SetSial(serial);
         }
+
+
 
         private void BT_Read_Click(object sender, RoutedEventArgs e)
         {

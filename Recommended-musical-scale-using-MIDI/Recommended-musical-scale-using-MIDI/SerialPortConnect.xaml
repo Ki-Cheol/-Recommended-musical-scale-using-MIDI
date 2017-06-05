@@ -5,26 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Recommended_musical_scale_using_MIDI"
         mc:Ignorable="d"
-        Title="SerialPortConnect" Height="302.833" Width="500">
+        Title="SerialPortConnect" Height="416.833" Width="645.5">
+    
     <Grid>
-        <TextBlock x:Name="TBB_Port" HorizontalAlignment="Left" TextWrapping="Wrap" Text="포트" VerticalAlignment="Top" Margin="10,18,0,0"/>
-        <TextBlock x:Name="TBB_Baudrate" HorizontalAlignment="Left" TextWrapping="Wrap" Text="바운드레이트" VerticalAlignment="Top" Margin="10,53,0,0"/>
-        <TextBlock x:Name="TBB_Data_Size" HorizontalAlignment="Left" TextWrapping="Wrap" Text="데이터크기" VerticalAlignment="Top" Margin="10,91,0,0"/>
-        <TextBlock x:Name="TBB_Parity" HorizontalAlignment="Left" TextWrapping="Wrap" Text="parity" VerticalAlignment="Top" Margin="10,129,0,0"/>
-        <TextBlock x:Name="TBB_HandSake" HorizontalAlignment="Left" Margin="10,163,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="handsake"/></TextBlock>
-        <ComboBox x:Name="CB_Port" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="113,10,0,0"/>
-        <ComboBox x:Name="CB_Baudrate" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="113,85,0,0"/>
-        <ComboBox x:Name="CB_Data_Size" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="113,47,0,0"/>
-        <ComboBox x:Name="CB_Parity" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="113,123,0,0"/>
-        <ComboBox x:Name="CB_HandSake" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="113,163,0,0" RenderTransformOrigin="0.505,2.835"/>
-        <Button x:Name="BT_SerialConnect" Content="연결" HorizontalAlignment="Left" VerticalAlignment="Top" Width="223" Margin="10,206,0,0" Height="45" Click="BT_SerialConnect_Click"/>
-        <TextBox x:Name="TB_DATA" HorizontalAlignment="Left" IsReadOnly="True" Height="176" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="227" Margin="255,9,0,0"/>
-        <TextBox x:Name="TB_Sender" HorizontalAlignment="Left" Height="31" Margin="244,220,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="141"/>
-        <Button x:Name="BT_Sender" Content="보내기" HorizontalAlignment="Left" Margin="400,220,0,0" VerticalAlignment="Top" Width="75" Click="BT_Sender_Click"/>
-
-
-
-
-
+        <ComboBox Height="23" HorizontalAlignment="Left" Margin="105,27,0,0" Name="cbComPort" VerticalAlignment="Top" Width="120" SelectionChanged="cbComPort_SelectionChanged" />
+        <TextBox Height="23" HorizontalAlignment="Left" Margin="105,82,0,0" Name="tbSendData" VerticalAlignment="Top" Width="378" />
+        <Label Content="통신 포트" Height="28" HorizontalAlignment="Left" Margin="25,27,0,0" Name="label1" VerticalAlignment="Top" />
+        <Label Content="수신 데이터" Height="28" HorizontalAlignment="Left" Margin="25,130,0,0" Name="label3" VerticalAlignment="Top" />
+        <TextBox Height="122" HorizontalAlignment="Left" Margin="25,156,0,0" Name="tbRecvData" VerticalAlignment="Top" Width="458" AllowDrop="False" />
+        <Label Content="통신 속도" Height="28" HorizontalAlignment="Left" Margin="295,27,0,0" Name="label4" VerticalAlignment="Top" />
+        <ComboBox Height="23" HorizontalAlignment="Right" Margin="0,27,20,0" Name="cbComSpeed" VerticalAlignment="Top" Width="120" SelectionChanged="cbComSpeed_SelectionChanged" SelectedIndex="1">
+            <ComboBoxItem Content="4800" />
+            <ComboBoxItem Content="9600" />
+            <ComboBoxItem Content="19200" />
+            <ComboBoxItem Content="115200" IsSelected="True"/>
+            <ComboBoxItem Content="38400" />
+            <ComboBoxItem Content="57600" />
+        </ComboBox>
+        <StatusBar Height="28" Margin="0,294,-19,0" Name="statusBar1" VerticalAlignment="Top" HorizontalAlignment="Stretch">
+            <StatusBarItem Name="sbStrip1" />
+        </StatusBar>
+        <Button Content="데이터 전송" Height="23" HorizontalAlignment="Left" Margin="25,82,0,0" Name="btnSendData" VerticalAlignment="Top" Width="75" Click="btnSendData_Click" />
+        <Button Content="화면 지우기" Height="23" HorizontalAlignment="Left" Margin="408,255,0,0" Name="btnScreenClear" VerticalAlignment="Top" Width="75" Click="btnScreenClear_Click" />
     </Grid>
 </Window>
