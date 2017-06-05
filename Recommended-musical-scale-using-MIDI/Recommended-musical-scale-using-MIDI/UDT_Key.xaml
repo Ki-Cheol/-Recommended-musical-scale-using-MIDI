@@ -13,6 +13,7 @@
             <ColumnDefinition Width="59*"/>
         </Grid.ColumnDefinitions>
         <TextBox x:Name="TB_NoteList" Grid.Column="1" IsReadOnly="True" HorizontalAlignment="Left" Height="100" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="398" Grid.ColumnSpan="2"/>
+        <ComboBox x:Name="CB_Chlist" HorizontalAlignment="Left" VerticalAlignment="Top" Width="59" Grid.Column="2" Height="22"/>
 
 
     </Grid>

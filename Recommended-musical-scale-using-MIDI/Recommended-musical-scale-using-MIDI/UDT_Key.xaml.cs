@@ -36,7 +36,7 @@ namespace Recommended_musical_scale_using_MIDI
         bool lashapdown = false;
         bool sidown = false;
         bool do6down = false;
-        int octavecount = 5;
+       public int octavecount { get; set; }
 
 
         #region 초창기 노트베이스
@@ -55,6 +55,7 @@ namespace Recommended_musical_scale_using_MIDI
 
         public UDT_Key()
         {
+            octavecount = 5;
             InitializeComponent();
             KeyDown += MainWindow_KeyDown;
             KeyUp += MainWindow_KeyUp;

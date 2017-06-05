@@ -18,6 +18,20 @@
         <Button x:Name="BT_Lead" Content="읽기" HorizontalAlignment="Left" Margin="432,48,0,0" VerticalAlignment="Top" Width="75" Click="BT_Lead_Click"/>
         <Button x:Name="BT_OpenSerial" Content="시리얼연결" HorizontalAlignment="Left" Margin="249,10,0,0" VerticalAlignment="Top" Width="75" Click="BT_OpenSerial_Click"/>
         <Button x:Name="BT_Read" Content="읽기" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="249,48,0,0" Click="BT_Read_Click"/>
-
+        <!-- 추후 수정 할 예정
+        <ComboBox x:Name="CB_OctCnt" HorizontalAlignment="Left" VerticalAlignment="Top" Width="63" Margin="0,154,0,0" Visibility="Hidden">
+            <ComboBoxItem Content="1"/>
+            <ComboBoxItem Content="2"/>
+            <ComboBoxItem Content="3"/>
+            <ComboBoxItem Content="4"/>
+            <ComboBoxItem Content="5"/>
+            <ComboBoxItem Content="6"/>
+            <ComboBoxItem Content="7"/>
+            <ComboBoxItem Content="8"/>
+            <ComboBoxItem Content="9"/>
+            <ComboBoxItem Content="10"/>
+           
+        </ComboBox>
+         -->
     </Grid>
 </Window>
