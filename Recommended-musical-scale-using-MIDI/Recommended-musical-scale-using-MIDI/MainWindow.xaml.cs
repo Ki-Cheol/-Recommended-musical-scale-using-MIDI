@@ -26,6 +26,7 @@ namespace Recommended_musical_scale_using_MIDI
     {
         List<Note> scalebase;
         string notebox;
+        List<DB_Note> dbNote =new List<DB_Note>();
         public MainWindow()
         {
             InitializeComponent();
@@ -142,10 +143,21 @@ namespace Recommended_musical_scale_using_MIDI
             {
                 if(musical.notelist.Count!=0)
                 {
-                    foreach(Note note in musical.notelist)
+                    if(i==0)
+                    {
+                        notebox +=++i + "ch" + "list \n \n";
+                    }
+                    else
+                    notebox += "\n\n" + ++i + "ch" + "list \n \n";
+
+                    foreach (Note note in musical.notelist)
                     {
                         notebox += note.ToString();
+                        NomalNote nomal;
+                        /// 0605 end
+
                     }
+                   
                 }
             }
             keyname.SetNoteListBox(notebox);
