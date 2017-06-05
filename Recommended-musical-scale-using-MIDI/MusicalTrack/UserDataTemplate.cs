@@ -49,11 +49,17 @@ namespace MusicalTrackLib
     }
 
 
-    struct DB_Note
+    public struct DB_Note
     {
-        int Scale;
-        int MuscialBeat;
-        int Notecnt;
+        public int Scale;
+        public int MuscialBeat;
+        public int Notecnt;
+        public DB_Note(int scale,int MuscialBeat,int Notecnt):this()
+        {
+            this.Scale = scale;
+            this.MuscialBeat = MuscialBeat;
+            this.Notecnt = Notecnt;
+        }
     }
     public enum MusicBeat
     {

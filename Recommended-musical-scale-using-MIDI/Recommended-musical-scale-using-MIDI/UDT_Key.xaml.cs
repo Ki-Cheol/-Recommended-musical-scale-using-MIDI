@@ -67,10 +67,17 @@ namespace Recommended_musical_scale_using_MIDI
             KeyUp += MainWindow_KeyUp;
             MidiShortMsgPlayer.MidiOpen();
             this.scalebase = scalebase;
+            
            
         }
-
-
+        public string GetNoteList()
+        {
+            return TB_NoteList.Text;
+        }
+        public void SetNoteListBox(string notelist)
+        {
+            TB_NoteList.Text = notelist;
+        }
         #region 키보드조작
         private void MainWindow_KeyUp(object sender, KeyEventArgs e)
         {
@@ -266,7 +273,8 @@ namespace Recommended_musical_scale_using_MIDI
                         if (!dodown)
                         {
                             dodown = true; MidiShortMsgPlayer.SendMidiShortMsg(buf1 + buf2 + msgch);
-                            TB_NoteList.Text += "(" + MusicScale.Do5 + Key_Beat + ")";
+                            TB_NoteList.Text += MusicScale.Do5 + " Term(" + Key_Beat + ")";
+                            
                             muscialNote.Add(new NomalNote(Key_Beat,MusicScale.Do5));
                         }
                     }
@@ -281,7 +289,8 @@ namespace Recommended_musical_scale_using_MIDI
                         if (!doshapdown)
                         {
                             doshapdown = true; MidiShortMsgPlayer.SendMidiShortMsg(buf1 + buf2 + msgch);
-                            TB_NoteList.Text += "("+MusicScale.DoSharp5+Key_Beat+ ")";
+                            TB_NoteList.Text += MusicScale.DoSharp5 + " Term(" + Key_Beat + ")";
+                            
                             muscialNote.Add(new NomalNote(Key_Beat, MusicScale.DoSharp5));
                         }
                     }
@@ -294,7 +303,8 @@ namespace Recommended_musical_scale_using_MIDI
                         if (!Redown)
                         {
                             Redown = true; MidiShortMsgPlayer.SendMidiShortMsg(buf1 + buf2 + msgch);
-                            TB_NoteList.Text += "(" + MusicScale.Re5 + Key_Beat + ")";
+                            TB_NoteList.Text += MusicScale.Re5 + " Term(" + Key_Beat + ")";
+                        
                             muscialNote.Add(new NomalNote(Key_Beat, MusicScale.Re5));
                         }
                     }
@@ -309,7 +319,7 @@ namespace Recommended_musical_scale_using_MIDI
                         if (!reshapdown)
                         {
                             reshapdown = true; MidiShortMsgPlayer.SendMidiShortMsg(buf1 + buf2 + msgch);
-                            TB_NoteList.Text += "(" + MusicScale.ReSharp5 + Key_Beat + ")";
+                            TB_NoteList.Text += MusicScale.ReSharp5 + " Term(" + Key_Beat + ")";
                             muscialNote.Add(new NomalNote(Key_Beat, MusicScale.ReSharp5));
                         }
                     }
@@ -322,7 +332,7 @@ namespace Recommended_musical_scale_using_MIDI
                         if (!midown)
                         {
                             midown = true; MidiShortMsgPlayer.SendMidiShortMsg(buf1 + buf2 + msgch);
-                            TB_NoteList.Text += "(" + MusicScale.Mi5 + Key_Beat + ")";
+                            TB_NoteList.Text += MusicScale.Mi5 + " Term(" + Key_Beat + ")";
                             muscialNote.Add(new NomalNote(Key_Beat, MusicScale.Mi5));
                         }
                     }
@@ -335,7 +345,7 @@ namespace Recommended_musical_scale_using_MIDI
                         if (!fadown)
                         {
                             fadown = true; MidiShortMsgPlayer.SendMidiShortMsg(buf1 + buf2 + msgch);
-                            TB_NoteList.Text += "(" + MusicScale.Fa5 + Key_Beat + ")";
+                            TB_NoteList.Text += MusicScale.Fa5 + " Term(" + Key_Beat + ")";
                             muscialNote.Add(new NomalNote(Key_Beat, MusicScale.Fa5));
                         }
                     }
@@ -350,7 +360,7 @@ namespace Recommended_musical_scale_using_MIDI
                         if (!fashapdown)
                         {
                             fashapdown = true; MidiShortMsgPlayer.SendMidiShortMsg(buf1 + buf2 + msgch);
-                            TB_NoteList.Text += "(" + MusicScale.FaSharp5 + Key_Beat + ")";
+                            TB_NoteList.Text += MusicScale.FaSharp5 + " Term(" + Key_Beat + ")";
                             muscialNote.Add(new NomalNote(Key_Beat, MusicScale.FaSharp5));
                         }
                     }
@@ -363,7 +373,7 @@ namespace Recommended_musical_scale_using_MIDI
                         if (!soldown)
                         {
                             soldown = true; MidiShortMsgPlayer.SendMidiShortMsg(buf1 + buf2 + msgch);
-                            TB_NoteList.Text += "(" + MusicScale.Sol5 + Key_Beat + ")";
+                            TB_NoteList.Text += MusicScale.Sol5 + " Term(" + Key_Beat + ")";
                             muscialNote.Add(new NomalNote(Key_Beat, MusicScale.Sol5));
                         }
                     }
@@ -378,7 +388,7 @@ namespace Recommended_musical_scale_using_MIDI
                         if (!solshapdown)
                         {
                             solshapdown = true; MidiShortMsgPlayer.SendMidiShortMsg(buf1 + buf2 + msgch);
-                            TB_NoteList.Text += "(" + MusicScale.SolSharp5 + Key_Beat + ")";
+                            TB_NoteList.Text += MusicScale.SolSharp5 + " Term(" + Key_Beat + ")";
                             muscialNote.Add(new NomalNote(Key_Beat, MusicScale.SolSharp5));
                         }
                     }
@@ -391,7 +401,7 @@ namespace Recommended_musical_scale_using_MIDI
                         if (!ladown)
                         {
                             ladown = true; MidiShortMsgPlayer.SendMidiShortMsg(buf1 + buf2 + msgch);
-                            TB_NoteList.Text += "(" + MusicScale.La5 + Key_Beat + ")";
+                            TB_NoteList.Text += MusicScale.La5 + " Term(" + Key_Beat + ")";
                             muscialNote.Add(new NomalNote(Key_Beat, MusicScale.La5));
                         }
                     }
@@ -407,7 +417,7 @@ namespace Recommended_musical_scale_using_MIDI
                         {
                             lashapdown = true; MidiShortMsgPlayer.SendMidiShortMsg(buf1 + buf2 + msgch);
 
-                            TB_NoteList.Text += "(" + MusicScale.LaSharp5 + Key_Beat + ")";
+                            TB_NoteList.Text += MusicScale.LaSharp5 + " Term(" + Key_Beat + ")";
                             muscialNote.Add(new NomalNote(Key_Beat, MusicScale.LaSharp5));
                         }
                     }
@@ -420,8 +430,8 @@ namespace Recommended_musical_scale_using_MIDI
                         if (!sidown)
                         {
                             sidown = true; MidiShortMsgPlayer.SendMidiShortMsg(buf1 + buf2 + msgch);
-                            
-                            TB_NoteList.Text += "(" + MusicScale.Si5 + Key_Beat + ")";
+
+                            TB_NoteList.Text += MusicScale.Si5 + " Term(" + Key_Beat + ")";
                             muscialNote.Add(new NomalNote(Key_Beat, MusicScale.Si5));
                         }
                     }
@@ -434,7 +444,7 @@ namespace Recommended_musical_scale_using_MIDI
                         if (!do6down)
                         {
                             do6down = true; MidiShortMsgPlayer.SendMidiShortMsg(buf1 + buf2 + msgch);
-                            TB_NoteList.Text += "(" + MusicScale.Do6 + Key_Beat + ")";
+                            TB_NoteList.Text += MusicScale.Do6 + " Term(" + Key_Beat + ")";
                             muscialNote.Add(new NomalNote(Key_Beat, MusicScale.Do6));
                         }
                     }

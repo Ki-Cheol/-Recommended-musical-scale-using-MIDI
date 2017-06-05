@@ -1,19 +1,8 @@
 ﻿using MidiChunkDataLib;
 using MusicalTrackLib;
-using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Recommended_musical_scale_using_MIDI
 {
@@ -25,6 +14,8 @@ namespace Recommended_musical_scale_using_MIDI
         public string FileName { get; private set; }
         MidiHeaderChunkData midiheader;
         List<MidiTrackChunkData> miditrack;
+
+        
         public ReadMidi(string filename)
         {
             InitializeComponent();
@@ -39,9 +30,11 @@ namespace Recommended_musical_scale_using_MIDI
             TB_Fomat.Text = midiheader.format.ToString();
             TB_NoteLength.Text = midiheader.timedivision.ToString();
             TB_TrackCunt.Text = midiheader.trackcount.ToString();
+
+          
             
         }
-
+        
         private void TreeView_Loaded(object sender, RoutedEventArgs e)
         {
             // ... Create a TreeViewItem.
@@ -80,7 +73,7 @@ namespace Recommended_musical_scale_using_MIDI
                         
 
                         eventss[i] = string.Format("MIDI type [{0}] time [{1}] data [{2}] data [{3}] ", ev.type, ev.time, mr.data1, mr.data2);
-
+                      
 
                     }
                     else

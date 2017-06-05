@@ -66,11 +66,7 @@ namespace Recommended_musical_scale_using_MIDI
         private void Port_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             String msg = Port.ReadExisting();
-            
-            //this.Invoke(new EventHandler(delegate
-            //{
-            //    Strings = String.Format("[RECV] {0}", msg);
-            //}));
+            TB_DATA.Text+= msg;
         }
         private Boolean IsOpen
         {

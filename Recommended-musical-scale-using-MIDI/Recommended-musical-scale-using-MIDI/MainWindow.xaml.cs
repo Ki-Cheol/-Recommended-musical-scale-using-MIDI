@@ -25,10 +25,12 @@ namespace Recommended_musical_scale_using_MIDI
     public partial class MainWindow : Window
     {
         List<Note> scalebase;
+        string notebox;
         public MainWindow()
         {
             InitializeComponent();
           scalebase = keyname.muscialNote;
+            notebox = keyname.GetNoteList();
             CB_InstrumentInit();
             CB_BeatInit();
             //초기 4분음표를 주기 위하여
@@ -81,7 +83,7 @@ namespace Recommended_musical_scale_using_MIDI
             mc.SaveMidiFile(sf.FileName);
 
         }
-
+        
         private void BT_ChangeInstrument_Click(object sender, RoutedEventArgs e)
         {
             byte[] data = new byte[4];
@@ -123,6 +125,30 @@ namespace Recommended_musical_scale_using_MIDI
         {
             SerialPortConnect sc = new SerialPortConnect();
             sc.ShowDialog();
+        }
+
+        private void BT_Read_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog of = new OpenFileDialog();
+            of.Filter = "*.mid|*.mid|*.*|*.*";
+            if(of.ShowDialog()!=true)
+            {
+                return;
+            }
+            MidiChunkData mc = new MidiChunkData(of.FileName);
+
+            int i = 0;
+            foreach (MusicalTrack musical in mc.GetMusicalTrackList())
+            {
+                if(musical.notelist.Count!=0)
+                {
+                    foreach(Note note in musical.notelist)
+                    {
+                        notebox += note.ToString();
+                    }
+                }
+            }
+            keyname.SetNoteListBox(notebox);
         }
     }
 }
