@@ -24,6 +24,7 @@ namespace Recommended_musical_scale_using_MIDI
     /// 
     public partial class UDT_Key : UserControl
     {
+     
         bool dodown = false;
         bool doshapdown = false;
         bool Redown = false;
@@ -38,7 +39,7 @@ namespace Recommended_musical_scale_using_MIDI
         bool sidown = false;
         bool do6down = false;
        public int octavecount { get; set; }
-
+        static int inst;
 
         #region 초창기 노트베이스
         public List<MusicScale> ScaleBase
@@ -104,7 +105,7 @@ namespace Recommended_musical_scale_using_MIDI
             }
             else
             {
-               throw 
+               
             }
         }
 
@@ -124,10 +125,11 @@ namespace Recommended_musical_scale_using_MIDI
         }
         public void SeriaL_keyGen(string s)
         {
+            
             int msgch = 144;
             int velo = 120;
             int buf2 = velo << 16;
-            switch (s)
+                switch (s)
             {
                 case "Z":
                     {
@@ -294,6 +296,37 @@ namespace Recommended_musical_scale_using_MIDI
                             TB_NoteList.Text += MusicScale.Do6 + " Term(" + Key_Beat + ")";
                             muscialNote.Add(new NomalNote(Key_Beat, MusicScale.Do6));
                         
+                    } break;
+                case "-":
+                    {
+                        if((--inst == -1))
+                        {
+                            inst = 0;
+                            break;
+                        }
+                        InstSetting(inst);
+                        serial.WriteLine(inst.ToString());
+
+                    }
+                    break;
+                case "+":
+                    {
+                        if (++inst == 100)
+                        {
+                            inst = 100;
+                            break;
+                            
+                        }
+                        InstSetting(inst);
+                        serial.WriteLine(inst.ToString());
+                    }
+                    break;
+                case "`":
+                    {
+                       
+               MidiShortMsgPlayer.StopMusic();
+                        inst = 0;
+                        InstSetting(inst);
                     }
                     break;
                 default: break;
@@ -309,6 +342,21 @@ namespace Recommended_musical_scale_using_MIDI
             this.scalebase = scalebase;
             
            
+        }
+        public void InstSetting(int cnt)
+        {
+            byte[] data = new byte[4];
+
+            data[0] = 0xC0;//change instrument, channel 0
+            Instrument ar;
+            ar = (Instrument)cnt;
+
+
+            data[1] = (byte)ar;
+
+            uint msg = BitConverter.ToUInt32(data, 0);
+
+            MidiShortMsgPlayer.SendMidiShortMsg((int)msg);
         }
         public string GetNoteList()
         {

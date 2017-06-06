@@ -166,7 +166,7 @@ namespace Recommended_musical_scale_using_MIDI
                     foreach (Note note in musical.notelist)
                     {
                         notebox += note.ToString();
-                        NomalNote nomal;
+                       
                         /// 0605 end
 
                     }
