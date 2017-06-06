@@ -100,11 +100,11 @@ namespace Recommended_musical_scale_using_MIDI
 
             if (serial.IsOpen)
             {
-                serial.WriteLine(TB_SerialTest.Text);
+               
             }
             else
             {
-                BT_SrialTest.Content = "통신포트가 열리지 않았습니다";
+               throw 
             }
         }
 
@@ -113,7 +113,7 @@ namespace Recommended_musical_scale_using_MIDI
         {
             if (TB_NoteList.Dispatcher.CheckAccess())
             {
-                TB_NoteList.Text+=text;
+                //TB_NoteList.Text+=text;
                 SeriaL_keyGen(text);
             }
             else
@@ -136,13 +136,12 @@ namespace Recommended_musical_scale_using_MIDI
                         int pitch = octavecount * 12 + 0;
                         int buf1 = pitch << 8;
 
-                        if (!dodown)
-                        {
-                            dodown = true; MidiShortMsgPlayer.SendMidiShortMsg(buf1 + buf2 + msgch);
+                             MidiShortMsgPlayer.SendMidiShortMsg(buf1 + buf2 + msgch);
                             TB_NoteList.Text += MusicScale.Do5 + " Term(" + Key_Beat + ")";
 
                             muscialNote.Add(new NomalNote(Key_Beat, MusicScale.Do5));
-                        }
+                        
+                       
                     }
                     break;
                 case "S":
@@ -152,13 +151,11 @@ namespace Recommended_musical_scale_using_MIDI
                         int pitch = octavecount * 12 + 1;
                         int buf1 = pitch << 8;
 
-                        if (!doshapdown)
-                        {
-                            doshapdown = true; MidiShortMsgPlayer.SendMidiShortMsg(buf1 + buf2 + msgch);
+                             MidiShortMsgPlayer.SendMidiShortMsg(buf1 + buf2 + msgch);
                             TB_NoteList.Text += MusicScale.DoSharp5 + " Term(" + Key_Beat + ")";
 
                             muscialNote.Add(new NomalNote(Key_Beat, MusicScale.DoSharp5));
-                        }
+                        
                     }
                     break;
                 case "X":
@@ -166,13 +163,12 @@ namespace Recommended_musical_scale_using_MIDI
 
                         int pitch = octavecount * 12 + 2;
                         int buf1 = pitch << 8;
-                        if (!Redown)
-                        {
-                            Redown = true; MidiShortMsgPlayer.SendMidiShortMsg(buf1 + buf2 + msgch);
+                      
+                             MidiShortMsgPlayer.SendMidiShortMsg(buf1 + buf2 + msgch);
                             TB_NoteList.Text += MusicScale.Re5 + " Term(" + Key_Beat + ")";
 
                             muscialNote.Add(new NomalNote(Key_Beat, MusicScale.Re5));
-                        }
+                        
                     }
                     break;
                 case "D":
@@ -182,12 +178,10 @@ namespace Recommended_musical_scale_using_MIDI
                         int pitch = octavecount * 12 + 3;
                         int buf1 = pitch << 8;
 
-                        if (!reshapdown)
-                        {
-                            reshapdown = true; MidiShortMsgPlayer.SendMidiShortMsg(buf1 + buf2 + msgch);
+                        MidiShortMsgPlayer.SendMidiShortMsg(buf1 + buf2 + msgch);
                             TB_NoteList.Text += MusicScale.ReSharp5 + " Term(" + Key_Beat + ")";
                             muscialNote.Add(new NomalNote(Key_Beat, MusicScale.ReSharp5));
-                        }
+                        
                     }
                     break;
                 case "C":
@@ -195,12 +189,11 @@ namespace Recommended_musical_scale_using_MIDI
 
                         int pitch = octavecount * 12 + 4;
                         int buf1 = pitch << 8;
-                        if (!midown)
-                        {
-                            midown = true; MidiShortMsgPlayer.SendMidiShortMsg(buf1 + buf2 + msgch);
+
+                            MidiShortMsgPlayer.SendMidiShortMsg(buf1 + buf2 + msgch);
                             TB_NoteList.Text += MusicScale.Mi5 + " Term(" + Key_Beat + ")";
                             muscialNote.Add(new NomalNote(Key_Beat, MusicScale.Mi5));
-                        }
+                        
                     }
                     break;
                 case "V":
@@ -208,12 +201,11 @@ namespace Recommended_musical_scale_using_MIDI
 
                         int pitch = octavecount * 12 + 5;
                         int buf1 = pitch << 8;
-                        if (!fadown)
-                        {
-                            fadown = true; MidiShortMsgPlayer.SendMidiShortMsg(buf1 + buf2 + msgch);
+
+                             MidiShortMsgPlayer.SendMidiShortMsg(buf1 + buf2 + msgch);
                             TB_NoteList.Text += MusicScale.Fa5 + " Term(" + Key_Beat + ")";
                             muscialNote.Add(new NomalNote(Key_Beat, MusicScale.Fa5));
-                        }
+                        
                     }
                     break;
                 case "G":
@@ -223,12 +215,11 @@ namespace Recommended_musical_scale_using_MIDI
                         int pitch = octavecount * 12 + 6;
                         int buf1 = pitch << 8;
 
-                        if (!fashapdown)
-                        {
+                       
                             fashapdown = true; MidiShortMsgPlayer.SendMidiShortMsg(buf1 + buf2 + msgch);
                             TB_NoteList.Text += MusicScale.FaSharp5 + " Term(" + Key_Beat + ")";
                             muscialNote.Add(new NomalNote(Key_Beat, MusicScale.FaSharp5));
-                        }
+                        
                     }
                     break;
                 case "B":
@@ -236,12 +227,11 @@ namespace Recommended_musical_scale_using_MIDI
 
                         int pitch = octavecount * 12 + 7;
                         int buf1 = pitch << 8;
-                        if (!soldown)
-                        {
+                        
                             soldown = true; MidiShortMsgPlayer.SendMidiShortMsg(buf1 + buf2 + msgch);
                             TB_NoteList.Text += MusicScale.Sol5 + " Term(" + Key_Beat + ")";
                             muscialNote.Add(new NomalNote(Key_Beat, MusicScale.Sol5));
-                        }
+                        
                     }
                     break;
                 case "H":
@@ -251,12 +241,11 @@ namespace Recommended_musical_scale_using_MIDI
                         int pitch = octavecount * 12 + 8;
                         int buf1 = pitch << 8;
 
-                        if (!solshapdown)
-                        {
-                            solshapdown = true; MidiShortMsgPlayer.SendMidiShortMsg(buf1 + buf2 + msgch);
+                        
+                             MidiShortMsgPlayer.SendMidiShortMsg(buf1 + buf2 + msgch);
                             TB_NoteList.Text += MusicScale.SolSharp5 + " Term(" + Key_Beat + ")";
                             muscialNote.Add(new NomalNote(Key_Beat, MusicScale.SolSharp5));
-                        }
+                       
                     }
                     break;
                 case "N":
@@ -264,12 +253,10 @@ namespace Recommended_musical_scale_using_MIDI
 
                         int pitch = octavecount * 12 + 9;
                         int buf1 = pitch << 8;
-                        if (!ladown)
-                        {
-                            ladown = true; MidiShortMsgPlayer.SendMidiShortMsg(buf1 + buf2 + msgch);
+                        MidiShortMsgPlayer.SendMidiShortMsg(buf1 + buf2 + msgch);
                             TB_NoteList.Text += MusicScale.La5 + " Term(" + Key_Beat + ")";
                             muscialNote.Add(new NomalNote(Key_Beat, MusicScale.La5));
-                        }
+                        
                     }
                     break;
                 case "J":
@@ -279,13 +266,11 @@ namespace Recommended_musical_scale_using_MIDI
                         int pitch = octavecount * 12 + 10;
                         int buf1 = pitch << 8;
 
-                        if (!lashapdown)
-                        {
-                            lashapdown = true; MidiShortMsgPlayer.SendMidiShortMsg(buf1 + buf2 + msgch);
+                        MidiShortMsgPlayer.SendMidiShortMsg(buf1 + buf2 + msgch);
 
                             TB_NoteList.Text += MusicScale.LaSharp5 + " Term(" + Key_Beat + ")";
                             muscialNote.Add(new NomalNote(Key_Beat, MusicScale.LaSharp5));
-                        }
+                        
                     }
                     break;
                 case "M":
@@ -293,13 +278,11 @@ namespace Recommended_musical_scale_using_MIDI
 
                         int pitch = octavecount * 12 + 11;
                         int buf1 = pitch << 8;
-                        if (!sidown)
-                        {
-                            sidown = true; MidiShortMsgPlayer.SendMidiShortMsg(buf1 + buf2 + msgch);
+                        MidiShortMsgPlayer.SendMidiShortMsg(buf1 + buf2 + msgch);
 
                             TB_NoteList.Text += MusicScale.Si5 + " Term(" + Key_Beat + ")";
                             muscialNote.Add(new NomalNote(Key_Beat, MusicScale.Si5));
-                        }
+                        
                     }
                     break;
                 case ",":
@@ -307,12 +290,10 @@ namespace Recommended_musical_scale_using_MIDI
 
                         int pitch = (octavecount + 1) * 12;
                         int buf1 = pitch << 8;
-                        if (!do6down)
-                        {
-                            do6down = true; MidiShortMsgPlayer.SendMidiShortMsg(buf1 + buf2 + msgch);
+                         MidiShortMsgPlayer.SendMidiShortMsg(buf1 + buf2 + msgch);
                             TB_NoteList.Text += MusicScale.Do6 + " Term(" + Key_Beat + ")";
                             muscialNote.Add(new NomalNote(Key_Beat, MusicScale.Do6));
-                        }
+                        
                     }
                     break;
                 default: break;

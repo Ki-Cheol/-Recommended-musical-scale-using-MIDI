@@ -98,6 +98,7 @@ namespace Recommended_musical_scale_using_MIDI
 
             data[0] = 0xC0;//change instrument, channel 0
 
+            
             CB_Instrument.Items[CB_Instrument.SelectedIndex].ToString();
             data[1] = (byte)(Instrument)Enum.Parse(typeof(Instrument), CB_Instrument.Text);
 
@@ -105,6 +106,7 @@ namespace Recommended_musical_scale_using_MIDI
 
             MidiShortMsgPlayer.SendMidiShortMsg((int)msg);
             keyname.Focus();
+            
 
 
         }
