@@ -21,7 +21,7 @@ namespace MusicalTrackLib
         /// <param name="baseTempo">기본탬포 100</param>
         /// <param name="baseTimeSigNumer">4박자</param>
         /// <param name="baseTimeSigDenom">4분의</param>
-        /// <param name="staffType">staff악보 타입</param>
+        /// <param name="staffType">보표타입</param>
         public MusicInfo(int baseTempo = 100, int baseTimeSigNumer = 4, int baseTimeSigDenom = 4, int staffType = 0)
         {
 

@@ -5,7 +5,11 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d">
     <Grid>
-        <Canvas Name="canvas1" AllowDrop="True" Background="White" Height="140" Width="1040">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1037*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <Canvas Name="canvas1" AllowDrop="True" Background="White" Height="140" Width="1040" Grid.ColumnSpan="2">
             <Canvas.ContextMenu>
                 <ContextMenu x:Name="contextMenu">
                     <MenuItem Header="오선 삭제"/>
@@ -17,9 +21,9 @@
             <Line X1="70" Y1="82" X2="2000" Y2="82" Stretch="Fill" Stroke="Black" Canvas.Left="70" Canvas.Top="82" Name="line4"></Line>
             <Line X1="70" Y1="90" X2="2000" Y2="90" Stretch="Fill" Stroke="Black" Canvas.Left="70" Canvas.Top="90" Name="line5"></Line>
 
-        
+
             <Line X1="70" Y1="58" X2="70" Y2="90" Stretch="Fill" Stroke="Black" Canvas.Left="70" Canvas.Top="58" Name="line11"></Line>
-           
+
         </Canvas>
     </Grid>
 </UserControl>

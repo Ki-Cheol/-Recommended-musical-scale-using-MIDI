@@ -970,6 +970,7 @@ namespace MidiChunkDataLib
             }
             return buf;
         }
+        
         #endregion
         /// <summary>
         /// 델타타임 구하는 메서드
