@@ -49,7 +49,7 @@ namespace Recommended_musical_scale_using_MIDI
        {
             foreach(string s  in Enum.GetNames(typeof(MusicBeat)))
             {
-                CB_Beat.Items(s);
+                CB_Beat.Items.Add(s);
             }
             CB_Beat.SelectedItem = CB_Beat.Items[5];
         }
